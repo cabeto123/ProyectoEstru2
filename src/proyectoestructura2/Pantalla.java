@@ -666,6 +666,8 @@ public class Pantalla extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
         } else if (((Integer) jSpinner1.getValue()) == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
+        } else if (sillaveprimaria.isSelected() && sillavesecundaria.isSelected() == true) {
+            JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un tipo de llave");
         } else {
             if (contllavesecundarias < 3) {
                 campos.add(new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected()));
@@ -681,9 +683,9 @@ public class Pantalla extends javax.swing.JFrame {
                 textfieldnombredelcampo.setText("");
                 jSpinner1.setValue(0);
                 sillaveprimaria.setSelected(false);
-                nollaveprimaria.setSelected(false);
+                nollaveprimaria.setSelected(true);
                 sillavesecundaria.setSelected(false);
-                nollavesecundaria.setSelected(false);
+                nollavesecundaria.setSelected(true);
                 jDialog1.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Se tiene un maximo de 3 llaves secundarias");
@@ -753,6 +755,9 @@ public class Pantalla extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
         } else if (((Integer) spinnermodificar.getValue()) == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
+
+        } else if (sillaveprimariamodificar.isSelected() && sillavesecundariamodificar.isSelected() == true) {
+            JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un tipo de llave");
 
         } else {
             Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
