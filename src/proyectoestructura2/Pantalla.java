@@ -5,7 +5,14 @@
 package proyectoestructura2;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.ArrayList;
+import javax.swing.ButtonModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,10 +25,11 @@ public class Pantalla extends javax.swing.JFrame {
      * Creates new form Pantalla
      */
     public Pantalla() {
-        
+
         initComponents();
         labelnombrearchivo.setVisible(false);
-        panelarchivo.setVisible(false);
+        panelcampos.setVisible(false);
+        jDialog1.setVisible(false);
     }
 
     /**
@@ -40,13 +48,54 @@ public class Pantalla extends javax.swing.JFrame {
         salir = new javax.swing.JMenuItem();
         popmenucampos = new javax.swing.JPopupMenu();
         crearcampos = new javax.swing.JMenuItem();
+        jDialog1 = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        sillaveprimaria = new javax.swing.JRadioButton();
+        nollaveprimaria = new javax.swing.JRadioButton();
+        jLabel7 = new javax.swing.JLabel();
+        nollavesecundaria = new javax.swing.JRadioButton();
+        sillavesecundaria = new javax.swing.JRadioButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        textfieldnombredelcampo = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        llaveprimaria = new javax.swing.ButtonGroup();
+        llavesecundaria = new javax.swing.ButtonGroup();
+        menucampos = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jDialog2 = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        combomodificar = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        sillaveprimariamodificar = new javax.swing.JRadioButton();
+        nollaveprimariamodificar = new javax.swing.JRadioButton();
+        jLabel14 = new javax.swing.JLabel();
+        nollavesecundariamodificar = new javax.swing.JRadioButton();
+        sillavesecundariamodificar = new javax.swing.JRadioButton();
+        modificarbn = new javax.swing.JToggleButton();
+        textfieldnombremodificar = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        spinnermodificar = new javax.swing.JSpinner();
         jPanel1 = new javax.swing.JPanel();
         labelnombrearchivo = new javax.swing.JLabel();
-        labelborde = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
         botonarchivo1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        panelarchivo = new javax.swing.JPanel();
+        panelcampos = new javax.swing.JPanel();
+        crearcamposbtn1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listacampos = new javax.swing.JList<>();
+        labelborde = new javax.swing.JLabel();
 
         nuevoarchivo.setText("Cargar archivo");
         nuevoarchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +123,371 @@ public class Pantalla extends javax.swing.JFrame {
         crearcampos.setText("Crear campos");
         popmenucampos.add(crearcampos);
 
+        jDialog1.setUndecorated(true);
+        jDialog1.setPreferredSize(new java.awt.Dimension(590, 510));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Crear campos");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Nombre del campo");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Tipo de variable");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "boolean", "double", "int", "string", " " }));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Llave primaria");
+
+        llaveprimaria.add(sillaveprimaria);
+        sillaveprimaria.setForeground(new java.awt.Color(255, 255, 255));
+        sillaveprimaria.setText("Si");
+        sillaveprimaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sillaveprimariaMouseClicked(evt);
+            }
+        });
+
+        llaveprimaria.add(nollaveprimaria);
+        nollaveprimaria.setForeground(new java.awt.Color(255, 255, 255));
+        nollaveprimaria.setText("No");
+        nollaveprimaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nollaveprimariaMouseClicked(evt);
+            }
+        });
+        nollaveprimaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nollaveprimariaActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Longitud");
+
+        llavesecundaria.add(nollavesecundaria);
+        nollavesecundaria.setForeground(new java.awt.Color(255, 255, 255));
+        nollavesecundaria.setText("No");
+        nollavesecundaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nollavesecundariaMouseClicked(evt);
+            }
+        });
+
+        llavesecundaria.add(sillavesecundaria);
+        sillavesecundaria.setForeground(new java.awt.Color(255, 255, 255));
+        sillavesecundaria.setText("Si");
+        sillavesecundaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sillavesecundariaMouseClicked(evt);
+            }
+        });
+
+        jToggleButton1.setText("Crear");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
+
+        textfieldnombredelcampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfieldnombredelcampoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("LLave secundaria");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textfieldnombredelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sillavesecundaria)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(sillaveprimaria)
+                        .addGap(24, 24, 24)
+                        .addComponent(nollaveprimaria))
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 376, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(113, 113, 113)
+                                .addComponent(nollavesecundaria))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))))
+                .addGap(224, 224, 224))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textfieldnombredelcampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sillaveprimaria)
+                            .addComponent(nollaveprimaria))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nollavesecundaria)
+                        .addComponent(sillavesecundaria)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92)
+                .addComponent(jToggleButton1)
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jMenuItem1.setText("Modificar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menucampos.add(jMenuItem1);
+
+        jMenuItem2.setText("Borrar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menucampos.add(jMenuItem2);
+
+        jDialog2.setUndecorated(true);
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Modificar");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Nombre del campo");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Tipo de variable");
+
+        combomodificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "boolean", "double", "int", "string", " " }));
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Llave primaria");
+
+        llaveprimaria.add(sillaveprimariamodificar);
+        sillaveprimariamodificar.setForeground(new java.awt.Color(255, 255, 255));
+        sillaveprimariamodificar.setText("Si");
+        sillaveprimariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sillaveprimariamodificarMouseClicked(evt);
+            }
+        });
+
+        llaveprimaria.add(nollaveprimariamodificar);
+        nollaveprimariamodificar.setForeground(new java.awt.Color(255, 255, 255));
+        nollaveprimariamodificar.setText("No");
+        nollaveprimariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nollaveprimariamodificarMouseClicked(evt);
+            }
+        });
+        nollaveprimariamodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nollaveprimariamodificarActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Longitud");
+
+        llavesecundaria.add(nollavesecundariamodificar);
+        nollavesecundariamodificar.setForeground(new java.awt.Color(255, 255, 255));
+        nollavesecundariamodificar.setText("No");
+        nollavesecundariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nollavesecundariamodificarMouseClicked(evt);
+            }
+        });
+
+        llavesecundaria.add(sillavesecundariamodificar);
+        sillavesecundariamodificar.setForeground(new java.awt.Color(255, 255, 255));
+        sillavesecundariamodificar.setText("Si");
+        sillavesecundariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sillavesecundariamodificarMouseClicked(evt);
+            }
+        });
+
+        modificarbn.setText("Modificar");
+        modificarbn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificarbnMouseClicked(evt);
+            }
+        });
+
+        textfieldnombremodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textfieldnombremodificarActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("LLave secundaria");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(combomodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textfieldnombremodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sillavesecundariamodificar)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(sillaveprimariamodificar)
+                        .addGap(24, 24, 24)
+                        .addComponent(nollaveprimariamodificar))
+                    .addComponent(spinnermodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modificarbn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 177, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(113, 113, 113)
+                                .addComponent(nollavesecundariamodificar))
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel14))))
+                .addGap(224, 224, 224))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(textfieldnombremodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel12))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(combomodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sillaveprimariamodificar)
+                            .addComponent(nollaveprimariamodificar))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nollavesecundariamodificar)
+                        .addComponent(sillavesecundariamodificar)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(spinnermodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92)
+                .addComponent(modificarbn)
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -82,12 +496,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         labelnombrearchivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         labelnombrearchivo.setOpaque(true);
-        jPanel1.add(labelnombrearchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 290, 20));
-
-        labelborde.setBackground(new java.awt.Color(255, 255, 255));
-        labelborde.setForeground(new java.awt.Color(255, 255, 255));
-        labelborde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/Icons/borde (1).png"))); // NOI18N
-        jPanel1.add(labelborde, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 860, 570));
+        jPanel1.add(labelnombrearchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 290, 20));
 
         botonarchivo.setBackground(new java.awt.Color(0, 153, 153));
         botonarchivo.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,20 +528,44 @@ public class Pantalla extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 10, -1, -1));
 
-        panelarchivo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelcampos.setBackground(new java.awt.Color(51, 51, 51));
+        panelcampos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelcampos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelarchivoLayout = new javax.swing.GroupLayout(panelarchivo);
-        panelarchivo.setLayout(panelarchivoLayout);
-        panelarchivoLayout.setHorizontalGroup(
-            panelarchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 576, Short.MAX_VALUE)
-        );
-        panelarchivoLayout.setVerticalGroup(
-            panelarchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 466, Short.MAX_VALUE)
-        );
+        crearcamposbtn1.setBackground(new java.awt.Color(51, 51, 51));
+        crearcamposbtn1.setForeground(new java.awt.Color(51, 255, 102));
+        crearcamposbtn1.setText("Crear campos");
+        crearcamposbtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crearcamposbtn1MouseClicked(evt);
+            }
+        });
+        panelcampos.add(crearcamposbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, 130, 40));
 
-        jPanel1.add(panelarchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 580, 470));
+        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Campos");
+        panelcampos.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, -1, -1));
+
+        listacampos.setBackground(new java.awt.Color(51, 51, 51));
+        listacampos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        listacampos.setForeground(new java.awt.Color(0, 255, 102));
+        listacampos.setModel(new DefaultListModel());
+        listacampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listacamposMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(listacampos);
+
+        panelcampos.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 380, 230));
+
+        jPanel1.add(panelcampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 590, 510));
+
+        labelborde.setBackground(new java.awt.Color(255, 255, 255));
+        labelborde.setForeground(new java.awt.Color(255, 255, 255));
+        labelborde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/Icons/borde (1).png"))); // NOI18N
+        jPanel1.add(labelborde, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 570));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,25 +586,206 @@ public class Pantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonarchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivoMouseClicked
- popmenuarchivo.show(botonarchivo, botonarchivo.getX()-210, botonarchivo.getY()-15);
-    
+        popmenuarchivo.show(botonarchivo, botonarchivo.getX() - 210, botonarchivo.getY() - 15);
+
     }//GEN-LAST:event_botonarchivoMouseClicked
 
     private void botonarchivo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivo1MouseClicked
-        // TODO add your handling code here:
+        panelcampos.setVisible(true);
     }//GEN-LAST:event_botonarchivo1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
- System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void nuevoarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoarchivoActionPerformed
-   
+
     }//GEN-LAST:event_nuevoarchivoActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_salirActionPerformed
+
+    private void crearcamposbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearcamposbtn1MouseClicked
+        labelnombrearchivo.setVisible(false);
+        jDialog1.pack();
+        jDialog1.setLocationRelativeTo(panelcampos);
+        jDialog1.setVisible(true);
+
+
+    }//GEN-LAST:event_crearcamposbtn1MouseClicked
+
+    private void textfieldnombredelcampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldnombredelcampoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfieldnombredelcampoActionPerformed
+
+    private void sillaveprimariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sillaveprimariaMouseClicked
+//        if (sillaveprimaria.isSelected()) {
+//            sillavesecundaria.setVisible(false);
+//
+//        }
+    }//GEN-LAST:event_sillaveprimariaMouseClicked
+
+    private void nollaveprimariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nollaveprimariaMouseClicked
+//        if (nollaveprimaria.isSelected()) {
+//            sillavesecundaria.setVisible(true);
+//
+//        }
+    }//GEN-LAST:event_nollaveprimariaMouseClicked
+
+    private void sillavesecundariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sillavesecundariaMouseClicked
+//        if (sillavesecundaria.isSelected()) {
+//            sillaveprimaria.setVisible(false);
+//
+//        }
+    }//GEN-LAST:event_sillavesecundariaMouseClicked
+
+    private void nollavesecundariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nollavesecundariaMouseClicked
+//        if (nollavesecundaria.isSelected()) {
+//            sillaveprimaria.setVisible(true);
+//
+//        }
+    }//GEN-LAST:event_nollavesecundariaMouseClicked
+
+    private void nollaveprimariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nollaveprimariaActionPerformed
+
+    }//GEN-LAST:event_nollaveprimariaActionPerformed
+
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+
+        if (llaveprimariacreada && sillaveprimaria.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
+        } else if (textfieldnombredelcampo.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
+        } else if (((Integer) jSpinner1.getValue()) == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud de variable");
+        } else if (((sillaveprimaria.isSelected() || nollaveprimaria.isSelected()) && (nollavesecundaria.isSelected() == false && sillavesecundaria.isSelected() == false)) || ((sillaveprimaria.isSelected() == false && nollaveprimaria.isSelected() == false) && (nollavesecundaria.isSelected() || sillavesecundaria.isSelected()))) {
+            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
+        } else if (nollaveprimaria.isSelected() && nollavesecundaria.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
+
+        } else if (!nollaveprimaria.isSelected() && !nollavesecundaria.isSelected()) {
+
+            JOptionPane.showMessageDialog(null, "Debe de seleccionar solo un tipo de llave");
+        } else {
+            campos.add(new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected()));
+            if (sillaveprimaria.isSelected() && llaveprimariacreada == false) {
+                llaveprimariacreada = true;
+            }
+            DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
+            modelojlist.addElement(campos.get(campos.size() - 1));
+            JOptionPane.showMessageDialog(null, "Campo creado");
+            textfieldnombredelcampo.setText("");
+            jSpinner1.setValue(0);
+            sillaveprimaria.setSelected(false);
+            nollaveprimaria.setSelected(false);
+            sillavesecundaria.setSelected(false);
+            nollavesecundaria.setSelected(false);
+            jDialog1.dispose();
+        }
+
+
+    }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    private void listacamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listacamposMouseClicked
+
+        if (listacampos.getSelectedIndex() != -1 && evt.getButton() == MouseEvent.BUTTON3) {
+
+            menucampos.show(listacampos, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_listacamposMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
+        Campo campomodificar = (Campo) modelolista.getElementAt(listacampos.getSelectedIndex());
+        jDialog2.pack();
+        jDialog2.setLocationRelativeTo(panelcampos);
+        jDialog2.setVisible(true);
+        textfieldnombremodificar.setText(campomodificar.nombre);
+        DefaultComboBoxModel modelocombo = (DefaultComboBoxModel) combomodificar.getModel();
+        modelocombo.setSelectedItem(campomodificar.tipodedato);
+        combomodificar.setModel(modelocombo);
+        spinnermodificar.setValue(campomodificar.longitud);
+        if (campomodificar.llaveprimaria) {
+            sillaveprimariamodificar.setSelected(true);
+            erallaveprimaria=true;
+            nollavesecundariamodificar.setSelected(true);
+        } else {
+            sillavesecundariamodificar.setSelected(false);
+
+            nollaveprimariamodificar.setSelected(true);
+
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void sillaveprimariamodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sillaveprimariamodificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sillaveprimariamodificarMouseClicked
+
+    private void nollaveprimariamodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nollaveprimariamodificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nollaveprimariamodificarMouseClicked
+
+    private void nollaveprimariamodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nollaveprimariamodificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nollaveprimariamodificarActionPerformed
+
+    private void nollavesecundariamodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nollavesecundariamodificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nollavesecundariamodificarMouseClicked
+
+    private void sillavesecundariamodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sillavesecundariamodificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sillavesecundariamodificarMouseClicked
+
+    private void modificarbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarbnMouseClicked
+
+        if (llaveprimariacreada && sillaveprimariamodificar.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
+        } else if (textfieldnombremodificar.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
+        } else if (((Integer) spinnermodificar.getValue()) == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud de variable");
+        } else if (((sillaveprimariamodificar.isSelected() || nollaveprimariamodificar.isSelected()) && (nollavesecundariamodificar.isSelected() == false && sillavesecundariamodificar.isSelected() == false)) || ((sillaveprimariamodificar.isSelected() == false && nollaveprimariamodificar.isSelected() == false) && (nollavesecundariamodificar.isSelected() || sillavesecundariamodificar.isSelected()))) {
+            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
+        } else if (nollaveprimariamodificar.isSelected() && nollavesecundariamodificar.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
+
+        } else if (!nollaveprimariamodificar.isSelected() && !nollavesecundariamodificar.isSelected()) {
+
+            JOptionPane.showMessageDialog(null, "Debe de seleccionar solo un tipo de llave");
+        } else {
+            Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
+            if (c.llaveprimaria==false&&erallaveprimaria==true) {
+                llaveprimariacreada = false;
+            }
+            campos.set(listacampos.getSelectedIndex(), c);
+            DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
+            modelojlist.set(listacampos.getSelectedIndex(), c);
+            listacampos.setModel(modelojlist);
+            JOptionPane.showMessageDialog(null, "Campo modificado");
+            textfieldnombremodificar.setText("");
+            spinnermodificar.setValue(0);
+            sillaveprimariamodificar.setSelected(false);
+            nollaveprimariamodificar.setSelected(false);
+            sillavesecundariamodificar.setSelected(false);
+            nollavesecundariamodificar.setSelected(false);
+            jDialog2.dispose();
+        }
+
+    }//GEN-LAST:event_modificarbnMouseClicked
+
+    private void textfieldnombremodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldnombremodificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textfieldnombremodificarActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       DefaultListModel modelolista=(DefaultListModel)listacampos.getModel();
+       campos.remove(listacampos.getSelectedIndex());
+       modelolista.remove(listacampos.getSelectedIndex());
+       listacampos.setModel(modelolista);
+       
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,28 +817,71 @@ public class Pantalla extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Pantalla n =new Pantalla();
+                Pantalla n = new Pantalla();
                 n.setLocationRelativeTo(null);
-                
+
                 n.setVisible(true);
             }
         });
     }
-
+    boolean llaveprimariacreada;
+    boolean erallaveprimaria;
+    ArrayList<Campo> campos = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonarchivo;
     private javax.swing.JButton botonarchivo1;
     private javax.swing.JMenuItem cerrararchivo;
+    private javax.swing.JComboBox<String> combomodificar;
     private javax.swing.JMenuItem crearcampos;
+    private javax.swing.JButton crearcamposbtn1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelborde;
     private javax.swing.JLabel labelnombrearchivo;
+    private javax.swing.JList<String> listacampos;
+    private javax.swing.ButtonGroup llaveprimaria;
+    private javax.swing.ButtonGroup llavesecundaria;
+    private javax.swing.JPopupMenu menucampos;
+    private javax.swing.JToggleButton modificarbn;
+    private javax.swing.JRadioButton nollaveprimaria;
+    private javax.swing.JRadioButton nollaveprimariamodificar;
+    private javax.swing.JRadioButton nollavesecundaria;
+    private javax.swing.JRadioButton nollavesecundariamodificar;
     private javax.swing.JMenuItem nuevoarchivo;
-    private javax.swing.JPanel panelarchivo;
+    private javax.swing.JPanel panelcampos;
     private javax.swing.JPopupMenu popmenuarchivo;
     private javax.swing.JPopupMenu popmenucampos;
     private javax.swing.JMenuItem salir;
     private javax.swing.JMenuItem salvararhivo;
+    private javax.swing.JRadioButton sillaveprimaria;
+    private javax.swing.JRadioButton sillaveprimariamodificar;
+    private javax.swing.JRadioButton sillavesecundaria;
+    private javax.swing.JRadioButton sillavesecundariamodificar;
+    private javax.swing.JSpinner spinnermodificar;
+    private javax.swing.JTextField textfieldnombredelcampo;
+    private javax.swing.JTextField textfieldnombremodificar;
     // End of variables declaration//GEN-END:variables
 }
