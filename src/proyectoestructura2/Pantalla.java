@@ -717,12 +717,10 @@ public class Pantalla extends javax.swing.JFrame {
             sillaveprimariamodificar.setSelected(true);
             erallaveprimaria = true;
             nollaveprimariamodificar.setSelected(false);
-        } else if(campomodificar.llavesecundaria){
+        } else if (campomodificar.llavesecundaria) {
             sillavesecundariamodificar.setSelected(true);
-            erallavesecundaria=true;
+            erallavesecundaria = true;
             nollaveprimariamodificar.setSelected(false);
-                    
-            
 
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -760,9 +758,9 @@ public class Pantalla extends javax.swing.JFrame {
             Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
             if (c.llaveprimaria == false && erallaveprimaria == true) {
                 llaveprimariacreada = false;
-            }else if(c.llavesecundaria==false){
+            } else if (c.llavesecundaria == false) {
                 contllavesecundarias--;
-            
+
             }
             campos.set(listacampos.getSelectedIndex(), c);
             DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
@@ -772,9 +770,9 @@ public class Pantalla extends javax.swing.JFrame {
             textfieldnombremodificar.setText("");
             spinnermodificar.setValue(0);
             sillaveprimariamodificar.setSelected(false);
-            nollaveprimariamodificar.setSelected(false);
+            nollaveprimariamodificar.setSelected(true);
             sillavesecundariamodificar.setSelected(false);
-            nollavesecundariamodificar.setSelected(false);
+            nollavesecundariamodificar.setSelected(true);
             jDialog2.dispose();
         }
 
