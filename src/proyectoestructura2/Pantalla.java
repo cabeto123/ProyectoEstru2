@@ -4,6 +4,8 @@
  */
 package proyectoestructura2;
 
+import java.awt.Color;
+import java.io.File;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +20,8 @@ public class Pantalla extends javax.swing.JFrame {
     public Pantalla() {
         
         initComponents();
-        
+        labelnombrearchivo.setVisible(false);
+        panelarchivo.setVisible(false);
     }
 
     /**
@@ -30,59 +33,106 @@ public class Pantalla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        popmenuarchivo = new javax.swing.JPopupMenu();
+        nuevoarchivo = new javax.swing.JMenuItem();
+        salvararhivo = new javax.swing.JMenuItem();
+        cerrararchivo = new javax.swing.JMenuItem();
+        salir = new javax.swing.JMenuItem();
+        popmenucampos = new javax.swing.JPopupMenu();
+        crearcampos = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        labelnombrearchivo = new javax.swing.JLabel();
+        labelborde = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
         botonarchivo1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        panelarchivo = new javax.swing.JPanel();
 
-        jMenuItem1.setText("Nuevo archivo");
-        jPopupMenu1.add(jMenuItem1);
+        nuevoarchivo.setText("Cargar archivo");
+        nuevoarchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoarchivoActionPerformed(evt);
+            }
+        });
+        popmenuarchivo.add(nuevoarchivo);
 
-        jMenuItem2.setText("Abrir archivo");
-        jPopupMenu1.add(jMenuItem2);
+        salvararhivo.setText("Salvar archivo");
+        popmenuarchivo.add(salvararhivo);
 
-        jMenuItem3.setText("Salvar archivo");
-        jPopupMenu1.add(jMenuItem3);
+        cerrararchivo.setText("Cerrar archivo");
+        popmenuarchivo.add(cerrararchivo);
 
-        jMenuItem4.setText("Cerrar archivo");
-        jPopupMenu1.add(jMenuItem4);
+        salir.setText("Salir");
+        salir.setToolTipText("");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+        popmenuarchivo.add(salir);
 
-        jMenuItem5.setText("Salir");
-        jPopupMenu1.add(jMenuItem5);
+        crearcampos.setText("Crear campos");
+        popmenucampos.add(crearcampos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        labelnombrearchivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        labelnombrearchivo.setOpaque(true);
+        jPanel1.add(labelnombrearchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 290, 20));
+
+        labelborde.setBackground(new java.awt.Color(255, 255, 255));
+        labelborde.setForeground(new java.awt.Color(255, 255, 255));
+        labelborde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/Icons/borde (1).png"))); // NOI18N
+        jPanel1.add(labelborde, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 860, 570));
+
         botonarchivo.setBackground(new java.awt.Color(0, 153, 153));
         botonarchivo.setForeground(new java.awt.Color(255, 255, 255));
         botonarchivo.setText("ARCHIVO");
+        botonarchivo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonarchivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonarchivoMouseClicked(evt);
             }
         });
-        jPanel1.add(botonarchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 102, -1));
+        jPanel1.add(botonarchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 102, -1));
 
-        botonarchivo1.setBackground(new java.awt.Color(204, 204, 255));
-        botonarchivo1.setForeground(new java.awt.Color(255, 255, 255));
+        botonarchivo1.setBackground(new java.awt.Color(0, 204, 51));
+        botonarchivo1.setForeground(new java.awt.Color(0, 51, 51));
         botonarchivo1.setText("Campos");
+        botonarchivo1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         botonarchivo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 botonarchivo1MouseClicked(evt);
             }
         });
-        jPanel1.add(botonarchivo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 42, 102, -1));
+        jPanel1.add(botonarchivo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 102, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/borde (1).png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 860, 570));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/Icons/x.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 10, -1, -1));
+
+        panelarchivo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout panelarchivoLayout = new javax.swing.GroupLayout(panelarchivo);
+        panelarchivo.setLayout(panelarchivoLayout);
+        panelarchivoLayout.setHorizontalGroup(
+            panelarchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 576, Short.MAX_VALUE)
+        );
+        panelarchivoLayout.setVerticalGroup(
+            panelarchivoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 466, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(panelarchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 580, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,13 +153,25 @@ public class Pantalla extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonarchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivoMouseClicked
- jPopupMenu1.show(botonarchivo, botonarchivo.getX()-130, botonarchivo.getY()-15);
+ popmenuarchivo.show(botonarchivo, botonarchivo.getX()-210, botonarchivo.getY()-15);
     
     }//GEN-LAST:event_botonarchivoMouseClicked
 
     private void botonarchivo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivo1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_botonarchivo1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+ System.exit(0);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void nuevoarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoarchivoActionPerformed
+   
+    }//GEN-LAST:event_nuevoarchivoActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,7 +204,7 @@ public class Pantalla extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Pantalla n =new Pantalla();
-                //n.setLocationRelativeTo(null);
+                n.setLocationRelativeTo(null);
                 
                 n.setVisible(true);
             }
@@ -152,13 +214,17 @@ public class Pantalla extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonarchivo;
     private javax.swing.JButton botonarchivo1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem cerrararchivo;
+    private javax.swing.JMenuItem crearcampos;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JLabel labelborde;
+    private javax.swing.JLabel labelnombrearchivo;
+    private javax.swing.JMenuItem nuevoarchivo;
+    private javax.swing.JPanel panelarchivo;
+    private javax.swing.JPopupMenu popmenuarchivo;
+    private javax.swing.JPopupMenu popmenucampos;
+    private javax.swing.JMenuItem salir;
+    private javax.swing.JMenuItem salvararhivo;
     // End of variables declaration//GEN-END:variables
 }
