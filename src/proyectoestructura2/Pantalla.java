@@ -85,6 +85,8 @@ public class Pantalla extends javax.swing.JFrame {
         textfieldnombremodificar = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         spinnermodificar = new javax.swing.JSpinner();
+        modificarcamposllaveprimaria = new javax.swing.ButtonGroup();
+        modificarcamposllavesecundaria = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         labelnombrearchivo = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
@@ -157,6 +159,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         llaveprimaria.add(nollaveprimaria);
         nollaveprimaria.setForeground(new java.awt.Color(255, 255, 255));
+        nollaveprimaria.setSelected(true);
         nollaveprimaria.setText("No");
         nollaveprimaria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -174,7 +177,9 @@ public class Pantalla extends javax.swing.JFrame {
 
         llavesecundaria.add(nollavesecundaria);
         nollavesecundaria.setForeground(new java.awt.Color(255, 255, 255));
+        nollavesecundaria.setSelected(true);
         nollavesecundaria.setText("No");
+        nollavesecundaria.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         nollavesecundaria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nollavesecundariaMouseClicked(evt);
@@ -338,7 +343,7 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Llave primaria");
 
-        llaveprimaria.add(sillaveprimariamodificar);
+        modificarcamposllaveprimaria.add(sillaveprimariamodificar);
         sillaveprimariamodificar.setForeground(new java.awt.Color(255, 255, 255));
         sillaveprimariamodificar.setText("Si");
         sillaveprimariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -347,8 +352,9 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        llaveprimaria.add(nollaveprimariamodificar);
+        modificarcamposllaveprimaria.add(nollaveprimariamodificar);
         nollaveprimariamodificar.setForeground(new java.awt.Color(255, 255, 255));
+        nollaveprimariamodificar.setSelected(true);
         nollaveprimariamodificar.setText("No");
         nollaveprimariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -364,8 +370,9 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Longitud");
 
-        llavesecundaria.add(nollavesecundariamodificar);
+        modificarcamposllavesecundaria.add(nollavesecundariamodificar);
         nollavesecundariamodificar.setForeground(new java.awt.Color(255, 255, 255));
+        nollavesecundariamodificar.setSelected(true);
         nollavesecundariamodificar.setText("No");
         nollavesecundariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -373,7 +380,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
 
-        llavesecundaria.add(sillavesecundariamodificar);
+        modificarcamposllavesecundaria.add(sillavesecundariamodificar);
         sillavesecundariamodificar.setForeground(new java.awt.Color(255, 255, 255));
         sillavesecundariamodificar.setText("Si");
         sillavesecundariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -658,30 +665,30 @@ public class Pantalla extends javax.swing.JFrame {
         } else if (textfieldnombredelcampo.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
         } else if (((Integer) jSpinner1.getValue()) == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese una longitud de variable");
-        } else if (((sillaveprimaria.isSelected() || nollaveprimaria.isSelected()) && (nollavesecundaria.isSelected() == false && sillavesecundaria.isSelected() == false)) || ((sillaveprimaria.isSelected() == false && nollaveprimaria.isSelected() == false) && (nollavesecundaria.isSelected() || sillavesecundaria.isSelected()))) {
-            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
-        } else if (nollaveprimaria.isSelected() && nollavesecundaria.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
-
-        } else if (!nollaveprimaria.isSelected() && !nollavesecundaria.isSelected()) {
-
-            JOptionPane.showMessageDialog(null, "Debe de seleccionar solo un tipo de llave");
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
         } else {
-            campos.add(new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected()));
-            if (sillaveprimaria.isSelected() && llaveprimariacreada == false) {
-                llaveprimariacreada = true;
+            if (contllavesecundarias < 3) {
+                campos.add(new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected()));
+                if (sillaveprimaria.isSelected() && llaveprimariacreada == false) {
+                    llaveprimariacreada = true;
+                }
+                if (sillavesecundaria.isSelected()) {
+                    contllavesecundarias++;
+                }
+                DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
+                modelojlist.addElement(campos.get(campos.size() - 1));
+                JOptionPane.showMessageDialog(null, "Campo creado");
+                textfieldnombredelcampo.setText("");
+                jSpinner1.setValue(0);
+                sillaveprimaria.setSelected(false);
+                nollaveprimaria.setSelected(false);
+                sillavesecundaria.setSelected(false);
+                nollavesecundaria.setSelected(false);
+                jDialog1.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Se tiene un maximo de 3 llaves secundarias");
             }
-            DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
-            modelojlist.addElement(campos.get(campos.size() - 1));
-            JOptionPane.showMessageDialog(null, "Campo creado");
-            textfieldnombredelcampo.setText("");
-            jSpinner1.setValue(0);
-            sillaveprimaria.setSelected(false);
-            nollaveprimaria.setSelected(false);
-            sillavesecundaria.setSelected(false);
-            nollavesecundaria.setSelected(false);
-            jDialog1.dispose();
+
         }
 
 
@@ -708,12 +715,14 @@ public class Pantalla extends javax.swing.JFrame {
         spinnermodificar.setValue(campomodificar.longitud);
         if (campomodificar.llaveprimaria) {
             sillaveprimariamodificar.setSelected(true);
-            erallaveprimaria=true;
-            nollavesecundariamodificar.setSelected(true);
-        } else {
-            sillavesecundariamodificar.setSelected(false);
-
-            nollaveprimariamodificar.setSelected(true);
+            erallaveprimaria = true;
+            nollaveprimariamodificar.setSelected(false);
+        } else if(campomodificar.llavesecundaria){
+            sillavesecundariamodificar.setSelected(true);
+            erallavesecundaria=true;
+            nollaveprimariamodificar.setSelected(false);
+                    
+            
 
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -745,19 +754,15 @@ public class Pantalla extends javax.swing.JFrame {
         } else if (textfieldnombremodificar.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
         } else if (((Integer) spinnermodificar.getValue()) == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese una longitud de variable");
-        } else if (((sillaveprimariamodificar.isSelected() || nollaveprimariamodificar.isSelected()) && (nollavesecundariamodificar.isSelected() == false && sillavesecundariamodificar.isSelected() == false)) || ((sillaveprimariamodificar.isSelected() == false && nollaveprimariamodificar.isSelected() == false) && (nollavesecundariamodificar.isSelected() || sillavesecundariamodificar.isSelected()))) {
-            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
-        } else if (nollaveprimariamodificar.isSelected() && nollavesecundariamodificar.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Debe de seleccionar un tipo de llave");
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
 
-        } else if (!nollaveprimariamodificar.isSelected() && !nollavesecundariamodificar.isSelected()) {
-
-            JOptionPane.showMessageDialog(null, "Debe de seleccionar solo un tipo de llave");
         } else {
             Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
-            if (c.llaveprimaria==false&&erallaveprimaria==true) {
+            if (c.llaveprimaria == false && erallaveprimaria == true) {
                 llaveprimariacreada = false;
+            }else if(c.llavesecundaria==false){
+                contllavesecundarias--;
+            
             }
             campos.set(listacampos.getSelectedIndex(), c);
             DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
@@ -780,11 +785,11 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_textfieldnombremodificarActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-       DefaultListModel modelolista=(DefaultListModel)listacampos.getModel();
-       campos.remove(listacampos.getSelectedIndex());
-       modelolista.remove(listacampos.getSelectedIndex());
-       listacampos.setModel(modelolista);
-       
+        DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
+        campos.remove(listacampos.getSelectedIndex());
+        modelolista.remove(listacampos.getSelectedIndex());
+        listacampos.setModel(modelolista);
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
@@ -824,8 +829,10 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
+    int contllavesecundarias = 0;
     boolean llaveprimariacreada;
     boolean erallaveprimaria;
+    boolean erallavesecundaria;
     ArrayList<Campo> campos = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonarchivo;
@@ -866,6 +873,8 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.ButtonGroup llavesecundaria;
     private javax.swing.JPopupMenu menucampos;
     private javax.swing.JToggleButton modificarbn;
+    private javax.swing.ButtonGroup modificarcamposllaveprimaria;
+    private javax.swing.ButtonGroup modificarcamposllavesecundaria;
     private javax.swing.JRadioButton nollaveprimaria;
     private javax.swing.JRadioButton nollaveprimariamodificar;
     private javax.swing.JRadioButton nollavesecundaria;

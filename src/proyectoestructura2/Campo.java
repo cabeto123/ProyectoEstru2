@@ -68,6 +68,8 @@ public class Campo {
         
         if (llaveprimaria) {
         return nombre + " - " + longitud + " - " + tipodedato + " - Es llave";    
+        }else if(llavesecundaria){
+        return nombre + " - " + longitud + " - " + tipodedato + " - LLave secundaria";    
         }else{
         return nombre + " - " + longitud + " - " + tipodedato + " - No es llave";    
         }
