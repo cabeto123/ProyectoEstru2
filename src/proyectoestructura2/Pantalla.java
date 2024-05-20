@@ -6,14 +6,19 @@ package proyectoestructura2;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -43,6 +48,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         popmenuarchivo = new javax.swing.JPopupMenu();
         nuevoarchivo = new javax.swing.JMenuItem();
+        abrirarchivo = new javax.swing.JMenuItem();
         salvararhivo = new javax.swing.JMenuItem();
         cerrararchivo = new javax.swing.JMenuItem();
         salir = new javax.swing.JMenuItem();
@@ -99,7 +105,7 @@ public class Pantalla extends javax.swing.JFrame {
         listacampos = new javax.swing.JList<>();
         labelborde = new javax.swing.JLabel();
 
-        nuevoarchivo.setText("Cargar archivo");
+        nuevoarchivo.setText("Nuevo archivo");
         nuevoarchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoarchivoActionPerformed(evt);
@@ -107,10 +113,28 @@ public class Pantalla extends javax.swing.JFrame {
         });
         popmenuarchivo.add(nuevoarchivo);
 
+        abrirarchivo.setText("Abrir archivo");
+        abrirarchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrirarchivoActionPerformed(evt);
+            }
+        });
+        popmenuarchivo.add(abrirarchivo);
+
         salvararhivo.setText("Salvar archivo");
+        salvararhivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvararhivoActionPerformed(evt);
+            }
+        });
         popmenuarchivo.add(salvararhivo);
 
         cerrararchivo.setText("Cerrar archivo");
+        cerrararchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrararchivoActionPerformed(evt);
+            }
+        });
         popmenuarchivo.add(cerrararchivo);
 
         salir.setText("Salir");
@@ -598,7 +622,12 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_botonarchivoMouseClicked
 
     private void botonarchivo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivo1MouseClicked
-        panelcampos.setVisible(true);
+
+        if (archivoabierto != null) {
+            panelcampos.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
+        }
     }//GEN-LAST:event_botonarchivo1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -606,7 +635,21 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void nuevoarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoarchivoActionPerformed
-
+        try {
+            String nombrearchivo = JOptionPane.showInputDialog("Digite el nombre del archivo");
+            File archivo = new File(nombrearchivo + ".txt");
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("");
+            bw.flush();
+            fw.close();
+            bw.close();
+            labelnombrearchivo.setText(nombrearchivo + ".txt");
+            labelnombrearchivo.setVisible(true);
+            archivoabierto = archivo;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_nuevoarchivoActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -659,40 +702,26 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_nollaveprimariaActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        Campo campoanadir = new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected());
+        if (validarcampo(sillaveprimaria.isSelected(), nollaveprimaria.isSelected(), sillavesecundaria.isSelected(), nollavesecundaria.isSelected(), textfieldnombredelcampo.getText(), jComboBox1.getSelectedItem() + "", ((Integer) jSpinner1.getValue()), campoanadir)) {
+            if (llaveprimariacreada == false && sillaveprimaria.isSelected()) {
+                llaveprimariacreada = true;
+            } else if (sillavesecundaria.isSelected() == true) {
+                contllavesecundarias++;
 
-        if (llaveprimariacreada && sillaveprimaria.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
-        } else if (textfieldnombredelcampo.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
-        } else if (((Integer) jSpinner1.getValue()) == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
-        } else if (sillaveprimaria.isSelected() && sillavesecundaria.isSelected() == true) {
-            JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un tipo de llave");
-        } else {
-            if (contllavesecundarias < 3) {
-                campos.add(new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected()));
-                if (sillaveprimaria.isSelected() && llaveprimariacreada == false) {
-                    llaveprimariacreada = true;
-                }
-                if (sillavesecundaria.isSelected()) {
-                    contllavesecundarias++;
-                }
-                DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
-                modelojlist.addElement(campos.get(campos.size() - 1));
-                JOptionPane.showMessageDialog(null, "Campo creado");
-                textfieldnombredelcampo.setText("");
-                jSpinner1.setValue(0);
-                sillaveprimaria.setSelected(false);
-                nollaveprimaria.setSelected(true);
-                sillavesecundaria.setSelected(false);
-                nollavesecundaria.setSelected(true);
-                jDialog1.dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Se tiene un maximo de 3 llaves secundarias");
             }
-
+            campos.add(campoanadir);
+            DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
+            modelojlist.addElement(campos.get(campos.size() - 1));
+            JOptionPane.showMessageDialog(null, "Campo creado");
+            textfieldnombredelcampo.setText("");
+            jSpinner1.setValue(0);
+            sillaveprimaria.setSelected(false);
+            nollaveprimaria.setSelected(true);
+            sillavesecundaria.setSelected(false);
+            nollavesecundaria.setSelected(true);
+            jDialog1.dispose();
         }
-
 
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -748,23 +777,15 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_sillavesecundariamodificarMouseClicked
 
     private void modificarbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarbnMouseClicked
-
-        if (llaveprimariacreada && sillaveprimariamodificar.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
-        } else if (textfieldnombremodificar.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
-        } else if (((Integer) spinnermodificar.getValue()) == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
-
-        } else if (sillaveprimariamodificar.isSelected() && sillavesecundariamodificar.isSelected() == true) {
-            JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un tipo de llave");
-
-        } else {
-            Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
+        Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
+        if (validarcampo(false, nollaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected(), nollavesecundariamodificar.isSelected(), textfieldnombremodificar.getText(), combomodificar.getSelectedItem() + "", ((Integer) spinnermodificar.getValue()), new Campo(""))) {
             if (c.llaveprimaria == false && erallaveprimaria == true) {
                 llaveprimariacreada = false;
             } else if (c.llavesecundaria == false) {
                 contllavesecundarias--;
+
+            } else if (c.llavesecundaria) {
+                contllavesecundarias++;
 
             }
             campos.set(listacampos.getSelectedIndex(), c);
@@ -780,7 +801,6 @@ public class Pantalla extends javax.swing.JFrame {
             nollavesecundariamodificar.setSelected(true);
             jDialog2.dispose();
         }
-
     }//GEN-LAST:event_modificarbnMouseClicked
 
     private void textfieldnombremodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldnombremodificarActionPerformed
@@ -795,9 +815,130 @@ public class Pantalla extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void abrirarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirarchivoActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int cont = 0;
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
+        fileChooser.setFileFilter(filter);
+        String s = "";
+        int seleccion = fileChooser.showOpenDialog(null);
+        DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            archivoabierto = fileChooser.getSelectedFile();
+            labelnombrearchivo.setText(archivoabierto.getName());
+            labelnombrearchivo.setVisible(true);
+            try {
+                Scanner entrada = new Scanner(archivoabierto);
+                while (entrada.hasNextLine()) {
+                    s += entrada.nextLine();
+                }
+                String[] splitter = s.split("/");
+                for (int i = 0; i < splitter.length; i++) {
+                    String[] splitter2 = splitter[i].split("!");
+                    switch (splitter2[3]) {
+                        case "0":
+
+                            campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, false));
+                            modelolista.addElement(campos.get(campos.size() - 1));
+                            break;
+                        case "1":
+                            campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], true, false));
+                            modelolista.addElement(campos.get(campos.size() - 1));
+                            cont++;
+                            break;
+                        case "2":
+                            campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, true));
+                            modelolista.addElement(campos.get(campos.size() - 1));
+                            contllavesecundarias++;
+                            break;
+
+                    }
+                }
+                if (cont == 1) {
+                    llaveprimariacreada = true;
+                }
+                listacampos.setModel(modelolista);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_abrirarchivoActionPerformed
+
+    private void salvararhivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvararhivoActionPerformed
+        guardararchivo();
+    }//GEN-LAST:event_salvararhivoActionPerformed
+
+    private void cerrararchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrararchivoActionPerformed
+        int resp = JOptionPane.showConfirmDialog(null, "Desea guardar el archivo?");
+        if (resp == JOptionPane.YES_OPTION) {
+            guardararchivo();
+            archivoabierto = null;
+            labelnombrearchivo.setText("");
+            labelnombrearchivo.setVisible(false);
+            listacampos.setModel(new DefaultListModel());
+            panelcampos.setVisible(false);
+            
+        }
+
+    }//GEN-LAST:event_cerrararchivoActionPerformed
+
+    public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
+        if (llaveprimariacreada && sillaveprimariavalidar) {
+            JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
+            return false;
+        } else if (nba.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
+            return false;
+        } else if (longitud == 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
+            return false;
+        } else if (sillaveprimariavalidar && sillavesecundariavalidar) {
+            JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un tipo de llave");
+            return false;
+        } else {
+            if (sillavesecundariavalidar == true && contllavesecundarias == 3) {
+                JOptionPane.showMessageDialog(null, "No se puede tener mas de 3 llavesecundarias");
+                return false;
+            } else {
+
+                for (int i = 0; i < campos.size(); i++) {
+                    if (c.nombre.equalsIgnoreCase(campos.get(i).nombre)) {
+                        JOptionPane.showMessageDialog(null, "No se puede tener el mismo campo");
+                        return false;
+                    }
+                }
+
+            }
+
+        }
+        return true;
+    }
+
+    public void guardararchivo() {
+        try {
+            FileWriter fw = new FileWriter(archivoabierto);
+            BufferedWriter bw = new BufferedWriter(fw);
+            String aux = "";
+            for (int i = 0; i < campos.size(); i++) {
+                if (campos.get(i).llavesecundaria) {
+                    aux += campos.get(i).nombre + "!" + campos.get(i).tipodedato + "!" + campos.get(i).longitud + "!2/";
+                } else if (campos.get(i).llaveprimaria) {
+                    aux += campos.get(i).nombre + "!" + campos.get(i).tipodedato + "!" + campos.get(i).longitud + "!1/";
+                } else {
+                    aux += campos.get(i).nombre + "!" + campos.get(i).tipodedato + "!" + campos.get(i).longitud + "!0/";
+                }
+
+            }
+            bw.write(aux);
+            bw.flush();
+            bw.close();
+            fw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -832,12 +973,14 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
+    File archivoabierto;
     int contllavesecundarias = 0;
     boolean llaveprimariacreada;
     boolean erallaveprimaria;
     boolean erallavesecundaria;
     ArrayList<Campo> campos = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem abrirarchivo;
     private javax.swing.JButton botonarchivo;
     private javax.swing.JButton botonarchivo1;
     private javax.swing.JMenuItem cerrararchivo;

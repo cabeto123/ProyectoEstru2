@@ -9,6 +9,7 @@ package proyectoestructura2;
  * @author emily
  */
 public class Campo {
+
     String nombre;
     int longitud;
     String tipodedato;
@@ -21,6 +22,10 @@ public class Campo {
         this.tipodedato = tipodedato;
         this.llaveprimaria = llaveprimaria;
         this.llavesecundaria = llavesecundaria;
+    }
+
+    public Campo(String nombre) {
+        this.nombre=nombre;
     }
 
     public String getNombre() {
@@ -62,19 +67,18 @@ public class Campo {
     public void setLlavesecundaria(boolean llavesecundaria) {
         this.llavesecundaria = llavesecundaria;
     }
-    
+
     @Override
     public String toString() {
-        
+
         if (llaveprimaria) {
-        return nombre + " - " + longitud + " - " + tipodedato + " - Es llave";    
-        }else if(llavesecundaria){
-        return nombre + " - " + longitud + " - " + tipodedato + " - LLave secundaria";    
-        }else{
-        return nombre + " - " + longitud + " - " + tipodedato + " - No es llave";    
+            return nombre + " - " + longitud + " - " + tipodedato + " - Es llave";
+        } else if (llavesecundaria) {
+            return nombre + " - " + longitud + " - " + tipodedato + " - LLave secundaria";
+        } else {
+            return nombre + " - " + longitud + " - " + tipodedato + " - No es llave";
         }
-        
+
     }
-    
-            
+
 }

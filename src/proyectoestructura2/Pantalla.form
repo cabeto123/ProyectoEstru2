@@ -10,21 +10,35 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="nuevoarchivo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cargar archivo"/>
+            <Property name="text" type="java.lang.String" value="Nuevo archivo"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuevoarchivoActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="abrirarchivo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Abrir archivo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="abrirarchivoActionPerformed"/>
           </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="salvararhivo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar archivo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvararhivoActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="cerrararchivo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cerrar archivo"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cerrararchivoActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="salir">
           <Properties>
