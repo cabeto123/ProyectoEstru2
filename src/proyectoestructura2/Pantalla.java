@@ -816,6 +816,8 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void abrirarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirarchivoActionPerformed
+        
+        if (archivoabierto==null) {
         JFileChooser fileChooser = new JFileChooser();
         int cont = 0;
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
@@ -863,10 +865,21 @@ public class Pantalla extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+            
+        }else{
+         JOptionPane.showMessageDialog(null, "Ya existe un archivo abierto");
+        }
+        
     }//GEN-LAST:event_abrirarchivoActionPerformed
 
     private void salvararhivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvararhivoActionPerformed
+        if (archivoabierto!=null) {
+         
         guardararchivo();
+        JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");   
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe de abrir un archivo antes");
+        }
     }//GEN-LAST:event_salvararhivoActionPerformed
 
     private void cerrararchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrararchivoActionPerformed
