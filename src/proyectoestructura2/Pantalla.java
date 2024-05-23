@@ -824,7 +824,7 @@ public class Pantalla extends javax.swing.JFrame {
     private void abrirarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirarchivoActionPerformed
 
         if (archivoabierto == null) {
-            
+
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
             int cont = 0;
@@ -909,11 +909,11 @@ public class Pantalla extends javax.swing.JFrame {
             jLabel7.setVisible(false);
             jSpinner1.setVisible(false);
             sillaveprimaria.setEnabled(false);
-        }else{
+        } else {
             jLabel7.setVisible(true);
             jSpinner1.setVisible(true);
             sillaveprimaria.setEnabled(true);
-        
+
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
