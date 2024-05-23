@@ -5,6 +5,7 @@
 package proyectoestructura2;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -32,6 +34,12 @@ public class Pantalla extends javax.swing.JFrame {
     public Pantalla() {
 
         initComponents();
+        int initialValue = 1;
+        int minValue = 0;
+        int maxValue = 10000;
+        int stepSize = 1;
+        SpinnerNumberModel model = new SpinnerNumberModel(initialValue, minValue, maxValue, stepSize);
+        jSpinner1.setModel(model);
         labelnombrearchivo.setVisible(false);
         panelcampos.setVisible(false);
         jDialog1.setVisible(false);
