@@ -229,21 +229,23 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Tipo de variable"/>
+                <Property name="text" type="java.lang.String" value="Tipo de dato"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="boolean"/>
-                    <StringItem index="1" value="double"/>
-                    <StringItem index="2" value="int"/>
-                    <StringItem index="3" value="string"/>
-                    <StringItem index="4" value=" "/>
+                  <StringArray count="4">
+                    <StringItem index="0" value="double"/>
+                    <StringItem index="1" value="int"/>
+                    <StringItem index="2" value="string"/>
+                    <StringItem index="3" value="boolean"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -353,6 +355,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner1">
+              <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[1, 32767]"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

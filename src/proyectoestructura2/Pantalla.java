@@ -150,7 +150,6 @@ public class Pantalla extends javax.swing.JFrame {
         popmenucampos.add(crearcampos);
 
         jDialog1.setUndecorated(true);
-        jDialog1.setPreferredSize(new java.awt.Dimension(590, 510));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -164,9 +163,14 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Tipo de variable");
+        jLabel5.setText("Tipo de dato");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "boolean", "double", "int", "string", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "double", "int", "string", "boolean" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,6 +238,8 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("LLave secundaria");
+
+        jSpinner1.setMaximumSize(new java.awt.Dimension(1, 32767));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -816,68 +822,70 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void abrirarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirarchivoActionPerformed
-        
-        if (archivoabierto==null) {
-        JFileChooser fileChooser = new JFileChooser();
-        int cont = 0;
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
-        fileChooser.setFileFilter(filter);
-        String s = "";
-        int seleccion = fileChooser.showOpenDialog(null);
-        DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            archivoabierto = fileChooser.getSelectedFile();
-            labelnombrearchivo.setText(archivoabierto.getName());
-            labelnombrearchivo.setVisible(true);
-            try {
-                Scanner entrada = new Scanner(archivoabierto);
-                while (entrada.hasNextLine()) {
-                    s += entrada.nextLine();
-                }
-                String[] splitter = s.split("/");
-                for (int i = 0; i < splitter.length; i++) {
-                    String[] splitter2 = splitter[i].split("!");
-                    switch (splitter2[3]) {
-                        case "0":
 
-                            campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, false));
-                            modelolista.addElement(campos.get(campos.size() - 1));
-                            break;
-                        case "1":
-                            campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], true, false));
-                            modelolista.addElement(campos.get(campos.size() - 1));
-                            cont++;
-                            break;
-                        case "2":
-                            campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, true));
-                            modelolista.addElement(campos.get(campos.size() - 1));
-                            contllavesecundarias++;
-                            break;
-
-                    }
-                }
-                if (cont == 1) {
-                    llaveprimariacreada = true;
-                }
-                listacampos.setModel(modelolista);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        if (archivoabierto == null) {
             
-        }else{
-         JOptionPane.showMessageDialog(null, "Ya existe un archivo abierto");
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
+            int cont = 0;
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
+            fileChooser.setFileFilter(filter);
+            String s = "";
+            int seleccion = fileChooser.showOpenDialog(null);
+            DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                archivoabierto = fileChooser.getSelectedFile();
+                labelnombrearchivo.setText(archivoabierto.getName());
+                labelnombrearchivo.setVisible(true);
+                try {
+                    Scanner entrada = new Scanner(archivoabierto);
+                    while (entrada.hasNextLine()) {
+                        s += entrada.nextLine();
+                    }
+                    String[] splitter = s.split("/");
+                    for (int i = 0; i < splitter.length; i++) {
+                        String[] splitter2 = splitter[i].split("!");
+                        switch (splitter2[3]) {
+                            case "0":
+
+                                campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, false));
+                                modelolista.addElement(campos.get(campos.size() - 1));
+                                break;
+                            case "1":
+                                campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], true, false));
+                                modelolista.addElement(campos.get(campos.size() - 1));
+                                cont++;
+                                break;
+                            case "2":
+                                campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, true));
+                                modelolista.addElement(campos.get(campos.size() - 1));
+                                contllavesecundarias++;
+                                break;
+
+                        }
+                    }
+                    if (cont == 1) {
+                        llaveprimariacreada = true;
+                    }
+                    listacampos.setModel(modelolista);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya existe un archivo abierto");
         }
-        
+
     }//GEN-LAST:event_abrirarchivoActionPerformed
 
     private void salvararhivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvararhivoActionPerformed
-        if (archivoabierto!=null) {
-         
-        guardararchivo();
-        JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");   
-        }else{
+        if (archivoabierto != null) {
+
+            guardararchivo();
+            JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");
+        } else {
             JOptionPane.showMessageDialog(null, "Debe de abrir un archivo antes");
         }
     }//GEN-LAST:event_salvararhivoActionPerformed
@@ -891,10 +899,23 @@ public class Pantalla extends javax.swing.JFrame {
             labelnombrearchivo.setVisible(false);
             listacampos.setModel(new DefaultListModel());
             panelcampos.setVisible(false);
-            
+
         }
 
     }//GEN-LAST:event_cerrararchivoActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (((String) jComboBox1.getSelectedItem()).equalsIgnoreCase("boolean")) {
+            jLabel7.setVisible(false);
+            jSpinner1.setVisible(false);
+            sillaveprimaria.setEnabled(false);
+        }else{
+            jLabel7.setVisible(true);
+            jSpinner1.setVisible(true);
+            sillaveprimaria.setEnabled(true);
+        
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
         if (llaveprimariacreada && sillaveprimariavalidar) {
