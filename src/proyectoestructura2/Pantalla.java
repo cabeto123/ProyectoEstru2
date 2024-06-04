@@ -18,7 +18,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -32,8 +34,9 @@ public class Pantalla extends javax.swing.JFrame {
      * Creates new form Pantalla
      */
     public Pantalla() {
-
+        
         initComponents();
+        
         int initialValue = 1;
         int minValue = 1;
         int maxValue = 10000;
@@ -41,9 +44,37 @@ public class Pantalla extends javax.swing.JFrame {
         SpinnerNumberModel model = new SpinnerNumberModel(initialValue, minValue, maxValue, stepSize);
         jSpinner1.setModel(model);
         spinnermodificar.setModel(model);
+        
         labelnombrearchivo.setVisible(false);
         panelcampos.setVisible(false);
         jDialog1.setVisible(false);
+        
+        labels.add(lblcampos1);
+        labels.add(lblcampos2);
+        labels.add(lblcampos3);
+        labels.add(lblcampos4);
+        labels.add(lblcampos5);
+        labels.add(lblcampos6);
+        labels.add(lblcampos7);
+        labels.add(lblcampos8);
+        labels.add(lblcampos9);
+        labels.add(lblcampos10);
+        txtfields.add(txtfield1);
+        txtfields.add(txtfield2);
+        txtfields.add(txtfield3);
+        txtfields.add(txtfield4);
+        txtfields.add(txtfield5);
+        txtfields.add(txtfield6);
+        txtfields.add(txtfield7);
+        txtfields.add(txtfield8);
+        txtfields.add(txtfield9);
+        txtfields.add(txtfield10);
+        for (int i = 0; i < labels.size(); i++) {
+            labels.get(i).setVisible(false);
+        }
+        for (int i = 0; i < txtfields.size(); i++) {
+            txtfields.get(i).setVisible(false);
+        }
     }
 
     /**
@@ -110,6 +141,29 @@ public class Pantalla extends javax.swing.JFrame {
         listarregistros = new javax.swing.JMenuItem();
         cargarregistrosdeprueba = new javax.swing.JMenuItem();
         cruzarregistros = new javax.swing.JMenuItem();
+        jDialog3 = new javax.swing.JDialog();
+        panelintroducirregistros = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        lblcampos10 = new javax.swing.JLabel();
+        txtfield10 = new javax.swing.JTextField();
+        lblcampos6 = new javax.swing.JLabel();
+        txtfield6 = new javax.swing.JTextField();
+        lblcampos7 = new javax.swing.JLabel();
+        txtfield7 = new javax.swing.JTextField();
+        lblcampos8 = new javax.swing.JLabel();
+        txtfield8 = new javax.swing.JTextField();
+        lblcampos9 = new javax.swing.JLabel();
+        txtfield9 = new javax.swing.JTextField();
+        lblcampos5 = new javax.swing.JLabel();
+        txtfield5 = new javax.swing.JTextField();
+        lblcampos1 = new javax.swing.JLabel();
+        txtfield1 = new javax.swing.JTextField();
+        lblcampos2 = new javax.swing.JLabel();
+        txtfield2 = new javax.swing.JTextField();
+        lblcampos3 = new javax.swing.JLabel();
+        txtfield3 = new javax.swing.JTextField();
+        lblcampos4 = new javax.swing.JLabel();
+        txtfield4 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         labelnombrearchivo = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
@@ -335,7 +389,7 @@ public class Pantalla extends javax.swing.JFrame {
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(92, 92, 92)
                 .addComponent(jToggleButton1)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -407,7 +461,6 @@ public class Pantalla extends javax.swing.JFrame {
 
         modificarcamposllaveprimaria.add(nollaveprimariamodificar);
         nollaveprimariamodificar.setForeground(new java.awt.Color(255, 255, 255));
-        nollaveprimariamodificar.setSelected(true);
         nollaveprimariamodificar.setText("No");
         nollaveprimariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -425,7 +478,6 @@ public class Pantalla extends javax.swing.JFrame {
 
         modificarcamposllavesecundaria.add(nollavesecundariamodificar);
         nollavesecundariamodificar.setForeground(new java.awt.Color(255, 255, 255));
-        nollavesecundariamodificar.setSelected(true);
         nollavesecundariamodificar.setText("No");
         nollavesecundariamodificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -551,6 +603,11 @@ public class Pantalla extends javax.swing.JFrame {
         popmenuregistros.setBorder(new javax.swing.border.MatteBorder(null));
 
         introducirregistros.setText("Introducir registros");
+        introducirregistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                introducirregistrosActionPerformed(evt);
+            }
+        });
         popmenuregistros.add(introducirregistros);
 
         modificarregistros.setText("Modificar registros");
@@ -570,6 +627,83 @@ public class Pantalla extends javax.swing.JFrame {
 
         cruzarregistros.setText("Cruzar registros");
         popmenuregistros.add(cruzarregistros);
+
+        jDialog3.setLocationByPlatform(true);
+        jDialog3.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jDialog3.setUndecorated(true);
+        jDialog3.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelintroducirregistros.setBackground(new java.awt.Color(51, 51, 51));
+        panelintroducirregistros.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelintroducirregistros.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI Semibold", 0, 36)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Introducir registros");
+        panelintroducirregistros.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        lblcampos10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos10.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos10.setText("Campo10");
+        panelintroducirregistros.add(lblcampos10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
+        panelintroducirregistros.add(txtfield10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 100, -1));
+
+        lblcampos6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos6.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos6.setText("Campo6");
+        panelintroducirregistros.add(lblcampos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+        panelintroducirregistros.add(txtfield6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 100, -1));
+
+        lblcampos7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos7.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos7.setText("Campo7");
+        panelintroducirregistros.add(lblcampos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
+        panelintroducirregistros.add(txtfield7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 100, -1));
+
+        lblcampos8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos8.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos8.setText("Campo8");
+        panelintroducirregistros.add(lblcampos8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
+        panelintroducirregistros.add(txtfield8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 100, -1));
+
+        lblcampos9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos9.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos9.setText("Campo9");
+        panelintroducirregistros.add(lblcampos9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
+        panelintroducirregistros.add(txtfield9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 100, -1));
+
+        lblcampos5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos5.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos5.setText("Campo5");
+        panelintroducirregistros.add(lblcampos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+        panelintroducirregistros.add(txtfield5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 100, -1));
+
+        lblcampos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos1.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos1.setText("Campo1");
+        panelintroducirregistros.add(lblcampos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        panelintroducirregistros.add(txtfield1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 100, -1));
+
+        lblcampos2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos2.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos2.setText("Campo2");
+        panelintroducirregistros.add(lblcampos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        panelintroducirregistros.add(txtfield2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 100, -1));
+
+        lblcampos3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos3.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos3.setText("Campo3");
+        panelintroducirregistros.add(lblcampos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        panelintroducirregistros.add(txtfield3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 100, -1));
+
+        lblcampos4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblcampos4.setForeground(new java.awt.Color(255, 255, 255));
+        lblcampos4.setText("Campo4");
+        panelintroducirregistros.add(lblcampos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        panelintroducirregistros.add(txtfield4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 100, -1));
+
+        jDialog3.getContentPane().add(panelintroducirregistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 490, 460));
+        panelintroducirregistros.getAccessibleContext().setAccessibleParent(panelcampos);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -711,12 +845,12 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void crearcamposbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearcamposbtn1MouseClicked
         jSpinner1.setModel(model);
-
+        
         labelnombrearchivo.setVisible(false);
         jDialog1.pack();
         jDialog1.setLocationRelativeTo(panelcampos);
         jDialog1.setVisible(true);
-
+        
 
     }//GEN-LAST:event_crearcamposbtn1MouseClicked
 
@@ -764,7 +898,7 @@ public class Pantalla extends javax.swing.JFrame {
                     llaveprimariacreada = true;
                 } else if (sillavesecundaria.isSelected() == true) {
                     contllavesecundarias++;
-
+                    
                 }
                 campos.add(campoanadir);
                 DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
@@ -781,14 +915,14 @@ public class Pantalla extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Ya no se pueden ingresar mas campos");
         }
-
+        
 
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void listacamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listacamposMouseClicked
-
+        
         if (listacampos.getSelectedIndex() != -1 && evt.getButton() == MouseEvent.BUTTON3) {
-
+            
             menucampos.show(listacampos, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_listacamposMouseClicked
@@ -813,7 +947,7 @@ public class Pantalla extends javax.swing.JFrame {
             sillavesecundariamodificar.setSelected(true);
             erallavesecundaria = true;
             nollaveprimariamodificar.setSelected(false);
-
+            
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -839,16 +973,16 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void modificarbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarbnMouseClicked
         Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
-
+        
         if (validarcampo(false, nollaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected(), nollavesecundariamodificar.isSelected(), textfieldnombremodificar.getText(), combomodificar.getSelectedItem() + "", ((Integer) spinnermodificar.getValue()), new Campo(""))) {
             if (c.llaveprimaria == false && erallaveprimaria == true) {
                 llaveprimariacreada = false;
             } else if (c.llavesecundaria == false) {
                 contllavesecundarias--;
-
+                
             } else if (c.llavesecundaria) {
                 contllavesecundarias++;
-
+                
             }
             campos.set(listacampos.getSelectedIndex(), c);
             DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
@@ -882,9 +1016,9 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void abrirarchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirarchivoActionPerformed
-
+        
         if (archivoabierto == null) {
-
+            
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
             int cont = 0;
@@ -903,13 +1037,13 @@ public class Pantalla extends javax.swing.JFrame {
                         s += entrada.nextLine();
                     }
                     if (s.length() > 3) {
-
+                        
                         String[] splitter = s.split("/");
                         for (int i = 0; i < splitter.length; i++) {
                             String[] splitter2 = splitter[i].split("!");
                             switch (splitter2[3]) {
                                 case "0":
-
+                                    
                                     campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, false));
                                     modelolista.addElement(campos.get(campos.size() - 1));
                                     break;
@@ -923,7 +1057,7 @@ public class Pantalla extends javax.swing.JFrame {
                                     modelolista.addElement(campos.get(campos.size() - 1));
                                     contllavesecundarias++;
                                     break;
-
+                                
                             }
                         }
                         if (cont == 1) {
@@ -931,12 +1065,17 @@ public class Pantalla extends javax.swing.JFrame {
                         }
                         listacampos.setModel(modelolista);
                     }
-
+                    for (int i = 0; i < campos.size(); i++) {
+                        labels.get(i).setText(campos.get(i).nombre);
+                        labels.get(i).setVisible(true);
+                        txtfields.get(i).setVisible(true);
+                    }
+    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
+            
         } else {
             JOptionPane.showMessageDialog(null, "Ya existe un archivo abierto");
         }
@@ -945,7 +1084,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void salvararhivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvararhivoActionPerformed
         if (archivoabierto != null) {
-
+            
             guardararchivo();
             JOptionPane.showMessageDialog(null, "Archivo guardado correctamente");
         } else {
@@ -957,7 +1096,7 @@ public class Pantalla extends javax.swing.JFrame {
         int resp = JOptionPane.showConfirmDialog(null, "Desea guardar el archivo?");
         if (resp == JOptionPane.YES_OPTION) {
             guardararchivo();
-
+            
         }
         archivoabierto = null;
         labelnombrearchivo.setText("");
@@ -972,16 +1111,16 @@ public class Pantalla extends javax.swing.JFrame {
             jLabel7.setVisible(false);
             jSpinner1.setVisible(false);
             sillaveprimaria.setEnabled(false);
-            jSpinner1.setValue(1);
+            jSpinner1.setValue(5);
         } else if (((String) jComboBox1.getSelectedItem()).equalsIgnoreCase("char")) {
-
+            
             jSpinner1.setValue(2);
             jSpinner1.setEnabled(false);
         } else {
             jLabel7.setVisible(true);
             jSpinner1.setVisible(true);
             sillaveprimaria.setEnabled(true);
-
+            
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -990,8 +1129,9 @@ public class Pantalla extends javax.swing.JFrame {
             jLabel14.setVisible(false);
             spinnermodificar.setVisible(false);
             sillaveprimariamodificar.setEnabled(false);
+            spinnermodificar.setValue(5);
         } else if (((String) combomodificar.getSelectedItem()).equalsIgnoreCase("char")) {
-
+            
             spinnermodificar.setValue(2);
             spinnermodificar.setEnabled(false);
         } else {
@@ -999,12 +1139,12 @@ public class Pantalla extends javax.swing.JFrame {
             spinnermodificar.setVisible(true);
             sillaveprimariamodificar.setEnabled(true);
             spinnermodificar.setModel(model);
-
+            
         }
     }//GEN-LAST:event_combomodificarActionPerformed
 
     private void botonarchivo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivo3MouseClicked
-
+        
         if (archivoabierto != null) {
             panelcampos.setVisible(true);
         } else {
@@ -1014,12 +1154,19 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void botonregistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonregistroMouseClicked
         if (archivoabierto != null) {
-            popmenuregistros.show(botonregistro, botonregistro.getX()-439, botonregistro.getY()-20);
+            popmenuregistros.show(botonregistro, botonregistro.getX() - 439, botonregistro.getY() - 20);
         } else {
             JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
         }
     }//GEN-LAST:event_botonregistroMouseClicked
 
+    private void introducirregistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_introducirregistrosActionPerformed
+        jDialog3.pack();
+        jDialog3.setLocationRelativeTo(panelcampos);
+        jDialog3.setVisible(true);
+         
+    }//GEN-LAST:event_introducirregistrosActionPerformed
+    
     public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
         if (llaveprimariacreada && sillaveprimariavalidar) {
             JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
@@ -1038,20 +1185,20 @@ public class Pantalla extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No se puede tener mas de 3 llavesecundarias");
                 return false;
             } else {
-
+                
                 for (int i = 0; i < campos.size(); i++) {
                     if (c.nombre.equalsIgnoreCase(campos.get(i).nombre)) {
                         JOptionPane.showMessageDialog(null, "No se puede tener el mismo campo");
                         return false;
                     }
                 }
-
+                
             }
-
+            
         }
         return true;
     }
-
+    
     public void guardararchivo() {
         try {
             FileWriter fw = new FileWriter(archivoabierto);
@@ -1065,7 +1212,7 @@ public class Pantalla extends javax.swing.JFrame {
                 } else {
                     aux += campos.get(i).nombre + "!" + campos.get(i).tipodedato + "!" + campos.get(i).longitud + "!0/";
                 }
-
+                
             }
             bw.write(aux);
             bw.flush();
@@ -1075,7 +1222,7 @@ public class Pantalla extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1105,7 +1252,7 @@ public class Pantalla extends javax.swing.JFrame {
             public void run() {
                 Pantalla n = new Pantalla();
                 n.setLocationRelativeTo(null);
-
+                
                 n.setVisible(true);
             }
         });
@@ -1117,6 +1264,8 @@ public class Pantalla extends javax.swing.JFrame {
     boolean erallaveprimaria;
     boolean erallavesecundaria;
     ArrayList<Campo> campos = new ArrayList();
+    ArrayList<JTextField> txtfields = new ArrayList();
+    ArrayList<JLabel> labels = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrirarchivo;
     private javax.swing.JMenuItem borrarregistros;
@@ -1134,12 +1283,14 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
+    private javax.swing.JDialog jDialog3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1158,6 +1309,16 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelborde;
     private javax.swing.JLabel labelnombrearchivo;
+    private javax.swing.JLabel lblcampos1;
+    private javax.swing.JLabel lblcampos10;
+    private javax.swing.JLabel lblcampos2;
+    private javax.swing.JLabel lblcampos3;
+    private javax.swing.JLabel lblcampos4;
+    private javax.swing.JLabel lblcampos5;
+    private javax.swing.JLabel lblcampos6;
+    private javax.swing.JLabel lblcampos7;
+    private javax.swing.JLabel lblcampos8;
+    private javax.swing.JLabel lblcampos9;
     private javax.swing.JList<String> listacampos;
     private javax.swing.JMenuItem listarregistros;
     private javax.swing.ButtonGroup llaveprimaria;
@@ -1173,6 +1334,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JRadioButton nollavesecundariamodificar;
     private javax.swing.JMenuItem nuevoarchivo;
     private javax.swing.JPanel panelcampos;
+    private javax.swing.JPanel panelintroducirregistros;
     private javax.swing.JPopupMenu popmenuarchivo;
     private javax.swing.JPopupMenu popmenucampos;
     private javax.swing.JPopupMenu popmenuregistros;
@@ -1185,5 +1347,15 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnermodificar;
     private javax.swing.JTextField textfieldnombredelcampo;
     private javax.swing.JTextField textfieldnombremodificar;
+    private javax.swing.JTextField txtfield1;
+    private javax.swing.JTextField txtfield10;
+    private javax.swing.JTextField txtfield2;
+    private javax.swing.JTextField txtfield3;
+    private javax.swing.JTextField txtfield4;
+    private javax.swing.JTextField txtfield5;
+    private javax.swing.JTextField txtfield6;
+    private javax.swing.JTextField txtfield7;
+    private javax.swing.JTextField txtfield8;
+    private javax.swing.JTextField txtfield9;
     // End of variables declaration//GEN-END:variables
 }
