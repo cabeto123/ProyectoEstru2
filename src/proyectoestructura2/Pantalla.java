@@ -102,14 +102,14 @@ public class Pantalla extends javax.swing.JFrame {
         spinnermodificar = new javax.swing.JSpinner();
         modificarcamposllaveprimaria = new javax.swing.ButtonGroup();
         modificarcamposllavesecundaria = new javax.swing.ButtonGroup();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        popmenuregistros = new javax.swing.JPopupMenu();
+        introducirregistros = new javax.swing.JMenuItem();
+        modificarregistros = new javax.swing.JMenuItem();
+        buscarregistros = new javax.swing.JMenuItem();
+        borrarregistros = new javax.swing.JMenuItem();
+        listarregistros = new javax.swing.JMenuItem();
+        cargarregistrosdeprueba = new javax.swing.JMenuItem();
+        cruzarregistros = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         labelnombrearchivo = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
@@ -548,26 +548,28 @@ public class Pantalla extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenuItem3.setText("jMenuItem3");
-        jPopupMenu1.add(jMenuItem3);
+        popmenuregistros.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jMenuItem4.setText("jMenuItem4");
-        jPopupMenu1.add(jMenuItem4);
+        introducirregistros.setText("Introducir registros");
+        popmenuregistros.add(introducirregistros);
 
-        jMenuItem5.setText("jMenuItem5");
-        jPopupMenu1.add(jMenuItem5);
+        modificarregistros.setText("Modificar registros");
+        popmenuregistros.add(modificarregistros);
 
-        jMenuItem6.setText("jMenuItem6");
-        jPopupMenu1.add(jMenuItem6);
+        buscarregistros.setText("Buscar registros");
+        popmenuregistros.add(buscarregistros);
 
-        jMenuItem7.setText("jMenuItem7");
-        jPopupMenu1.add(jMenuItem7);
+        borrarregistros.setText("Borrar registros");
+        popmenuregistros.add(borrarregistros);
 
-        jMenuItem8.setText("jMenuItem8");
-        jPopupMenu1.add(jMenuItem8);
+        listarregistros.setText("Listar registros");
+        popmenuregistros.add(listarregistros);
 
-        jMenuItem9.setText("jMenuItem9");
-        jPopupMenu1.add(jMenuItem9);
+        cargarregistrosdeprueba.setText("Cargar registros de prueba");
+        popmenuregistros.add(cargarregistrosdeprueba);
+
+        cruzarregistros.setText("Cruzar registros");
+        popmenuregistros.add(cruzarregistros);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -640,7 +642,12 @@ public class Pantalla extends javax.swing.JFrame {
         botonregistro.setBackground(new java.awt.Color(255, 255, 102));
         botonregistro.setText("Registro");
         botonregistro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(botonregistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 110, 20));
+        botonregistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonregistroMouseClicked(evt);
+            }
+        });
+        jPanel1.add(botonregistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 170, 20));
 
         botonarchivo3.setBackground(new java.awt.Color(0, 204, 51));
         botonarchivo3.setForeground(new java.awt.Color(0, 51, 51));
@@ -704,7 +711,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void crearcamposbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearcamposbtn1MouseClicked
         jSpinner1.setModel(model);
-        
+
         labelnombrearchivo.setVisible(false);
         jDialog1.pack();
         jDialog1.setLocationRelativeTo(panelcampos);
@@ -832,7 +839,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void modificarbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarbnMouseClicked
         Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
-        
+
         if (validarcampo(false, nollaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected(), nollavesecundariamodificar.isSelected(), textfieldnombremodificar.getText(), combomodificar.getSelectedItem() + "", ((Integer) spinnermodificar.getValue()), new Campo(""))) {
             if (c.llaveprimaria == false && erallaveprimaria == true) {
                 llaveprimariacreada = false;
@@ -1005,6 +1012,14 @@ public class Pantalla extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botonarchivo3MouseClicked
 
+    private void botonregistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonregistroMouseClicked
+        if (archivoabierto != null) {
+            popmenuregistros.show(botonregistro, botonregistro.getX()-439, botonregistro.getY()-20);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
+        }
+    }//GEN-LAST:event_botonregistroMouseClicked
+
     public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
         if (llaveprimariacreada && sillaveprimariavalidar) {
             JOptionPane.showMessageDialog(null, "Ya existe una llave primaria");
@@ -1104,13 +1119,18 @@ public class Pantalla extends javax.swing.JFrame {
     ArrayList<Campo> campos = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrirarchivo;
+    private javax.swing.JMenuItem borrarregistros;
     private javax.swing.JButton botonarchivo;
     private javax.swing.JButton botonarchivo3;
     private javax.swing.JButton botonregistro;
+    private javax.swing.JMenuItem buscarregistros;
+    private javax.swing.JMenuItem cargarregistrosdeprueba;
     private javax.swing.JMenuItem cerrararchivo;
     private javax.swing.JComboBox<String> combomodificar;
     private javax.swing.JMenuItem crearcampos;
     private javax.swing.JButton crearcamposbtn1;
+    private javax.swing.JMenuItem cruzarregistros;
+    private javax.swing.JMenuItem introducirregistros;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
@@ -1130,29 +1150,23 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelborde;
     private javax.swing.JLabel labelnombrearchivo;
     private javax.swing.JList<String> listacampos;
+    private javax.swing.JMenuItem listarregistros;
     private javax.swing.ButtonGroup llaveprimaria;
     private javax.swing.ButtonGroup llavesecundaria;
     private javax.swing.JPopupMenu menucampos;
     private javax.swing.JToggleButton modificarbn;
     private javax.swing.ButtonGroup modificarcamposllaveprimaria;
     private javax.swing.ButtonGroup modificarcamposllavesecundaria;
+    private javax.swing.JMenuItem modificarregistros;
     private javax.swing.JRadioButton nollaveprimaria;
     private javax.swing.JRadioButton nollaveprimariamodificar;
     private javax.swing.JRadioButton nollavesecundaria;
@@ -1161,6 +1175,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JPanel panelcampos;
     private javax.swing.JPopupMenu popmenuarchivo;
     private javax.swing.JPopupMenu popmenucampos;
+    private javax.swing.JPopupMenu popmenuregistros;
     private javax.swing.JMenuItem salir;
     private javax.swing.JMenuItem salvararhivo;
     private javax.swing.JRadioButton sillaveprimaria;

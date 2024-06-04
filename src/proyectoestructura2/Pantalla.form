@@ -683,45 +683,52 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="modificarcamposllavesecundaria">
     </Component>
-    <Container class="javax.swing.JPopupMenu" name="jPopupMenu1">
+    <Container class="javax.swing.JPopupMenu" name="popmenuregistros">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+            <MatteColorBorder/>
+          </Border>
+        </Property>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+        <MenuItem class="javax.swing.JMenuItem" name="introducirregistros">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem3"/>
+            <Property name="text" type="java.lang.String" value="Introducir registros"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+        <MenuItem class="javax.swing.JMenuItem" name="modificarregistros">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem4"/>
+            <Property name="text" type="java.lang.String" value="Modificar registros"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
+        <MenuItem class="javax.swing.JMenuItem" name="buscarregistros">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem5"/>
+            <Property name="text" type="java.lang.String" value="Buscar registros"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+        <MenuItem class="javax.swing.JMenuItem" name="borrarregistros">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem6"/>
+            <Property name="text" type="java.lang.String" value="Borrar registros"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+        <MenuItem class="javax.swing.JMenuItem" name="listarregistros">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem7"/>
+            <Property name="text" type="java.lang.String" value="Listar registros"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem8">
+        <MenuItem class="javax.swing.JMenuItem" name="cargarregistrosdeprueba">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem8"/>
+            <Property name="text" type="java.lang.String" value="Cargar registros de prueba"/>
           </Properties>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
+        <MenuItem class="javax.swing.JMenuItem" name="cruzarregistros">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jMenuItem9"/>
+            <Property name="text" type="java.lang.String" value="Cruzar registros"/>
           </Properties>
         </MenuItem>
       </SubComponents>
@@ -957,9 +964,12 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonregistroMouseClicked"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="440" y="40" width="110" height="20"/>
+              <AbsoluteConstraints x="440" y="40" width="170" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
