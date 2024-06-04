@@ -39,9 +39,9 @@ public class Pantalla extends javax.swing.JFrame {
         
         int initialValue = 1;
         int minValue = 1;
-        int maxValue = 10000;
+        int maxValue = 20;
         int stepSize = 1;
-        SpinnerNumberModel model = new SpinnerNumberModel(initialValue, minValue, maxValue, stepSize);
+        SpinnerNumberModel model = new SpinnerNumberModel(initialValue, minValue, 20, stepSize);
         jSpinner1.setModel(model);
         spinnermodificar.setModel(model);
         
@@ -311,7 +311,7 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("LLave secundaria");
 
-        jSpinner1.setMaximumSize(new java.awt.Dimension(1, 32767));
+        jSpinner1.setMaximumSize(new java.awt.Dimension(20, 20));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -510,6 +510,8 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("LLave secundaria");
 
+        spinnermodificar.setMaximumSize(new java.awt.Dimension(20, 20));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -629,7 +631,6 @@ public class Pantalla extends javax.swing.JFrame {
         popmenuregistros.add(cruzarregistros);
 
         jDialog3.setLocationByPlatform(true);
-        jDialog3.setMaximumSize(new java.awt.Dimension(32767, 32767));
         jDialog3.setUndecorated(true);
         jDialog3.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1174,8 +1175,11 @@ public class Pantalla extends javax.swing.JFrame {
         } else if (nba.length() == 0) {
             JOptionPane.showMessageDialog(null, "Ingrese nombre de el campo");
             return false;
-        } else if (longitud == 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese una longitud para el campo");
+        } else if (longitud <= 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud positiva para el campo");
+            return false;
+        } else if (longitud > 20) {
+            JOptionPane.showMessageDialog(null, "Ingrese una longitud menor a 20");
             return false;
         } else if (sillaveprimariavalidar && sillavesecundariavalidar) {
             JOptionPane.showMessageDialog(null, "Solo se puede seleccionar un tipo de llave");
