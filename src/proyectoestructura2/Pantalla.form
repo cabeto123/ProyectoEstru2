@@ -563,10 +563,13 @@
                     <StringItem index="1" value="double"/>
                     <StringItem index="2" value="int"/>
                     <StringItem index="3" value="string"/>
-                    <StringItem index="4" value=" "/>
+                    <StringItem index="4" value="char"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combomodificarActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>

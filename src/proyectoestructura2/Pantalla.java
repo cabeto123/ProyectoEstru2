@@ -40,6 +40,7 @@ public class Pantalla extends javax.swing.JFrame {
         int stepSize = 1;
         SpinnerNumberModel model = new SpinnerNumberModel(initialValue, minValue, maxValue, stepSize);
         jSpinner1.setModel(model);
+        spinnermodificar.setModel(model);
         labelnombrearchivo.setVisible(false);
         panelcampos.setVisible(false);
         jDialog1.setVisible(false);
@@ -375,7 +376,12 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tipo de variable");
 
-        combomodificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "boolean", "double", "int", "string", " " }));
+        combomodificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "boolean", "double", "int", "string", "char" }));
+        combomodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combomodificarActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -823,9 +829,13 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
-        campos.remove(listacampos.getSelectedIndex());
-        modelolista.remove(listacampos.getSelectedIndex());
-        listacampos.setModel(modelolista);
+        if (campos.get(listacampos.getSelectedIndex()).llaveprimaria) {
+            JOptionPane.showMessageDialog(null, "No se puede eliminar llaves primarias");
+        } else {
+            campos.remove(listacampos.getSelectedIndex());
+            modelolista.remove(listacampos.getSelectedIndex());
+            listacampos.setModel(modelolista);
+        }
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -931,6 +941,23 @@ public class Pantalla extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void combomodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combomodificarActionPerformed
+        if (((String) combomodificar.getSelectedItem()).equalsIgnoreCase("boolean")) {
+            jLabel14.setVisible(false);
+            spinnermodificar.setVisible(false);
+            sillaveprimariamodificar.setEnabled(false);
+        } else if (((String) combomodificar.getSelectedItem()).equalsIgnoreCase("char")) {
+
+            spinnermodificar.setValue(2);
+            spinnermodificar.setEnabled(false);
+        } else {
+            jLabel14.setVisible(true);
+            spinnermodificar.setVisible(true);
+            sillaveprimariamodificar.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_combomodificarActionPerformed
 
     public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
         if (llaveprimariacreada && sillaveprimariavalidar) {
