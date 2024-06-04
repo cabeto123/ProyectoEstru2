@@ -102,10 +102,17 @@ public class Pantalla extends javax.swing.JFrame {
         spinnermodificar = new javax.swing.JSpinner();
         modificarcamposllaveprimaria = new javax.swing.ButtonGroup();
         modificarcamposllavesecundaria = new javax.swing.ButtonGroup();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         labelnombrearchivo = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
-        botonarchivo1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         panelcampos = new javax.swing.JPanel();
         crearcamposbtn1 = new javax.swing.JButton();
@@ -113,6 +120,8 @@ public class Pantalla extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         listacampos = new javax.swing.JList<>();
         labelborde = new javax.swing.JLabel();
+        botonregistro = new javax.swing.JButton();
+        botonarchivo3 = new javax.swing.JButton();
 
         nuevoarchivo.setText("Nuevo archivo");
         nuevoarchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -374,7 +383,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Tipo de variable");
+        jLabel12.setText("Tipo de dato");
 
         combomodificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "boolean", "double", "int", "string", "char" }));
         combomodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -539,6 +548,27 @@ public class Pantalla extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jMenuItem3.setText("jMenuItem3");
+        jPopupMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("jMenuItem4");
+        jPopupMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("jMenuItem5");
+        jPopupMenu1.add(jMenuItem5);
+
+        jMenuItem6.setText("jMenuItem6");
+        jPopupMenu1.add(jMenuItem6);
+
+        jMenuItem7.setText("jMenuItem7");
+        jPopupMenu1.add(jMenuItem7);
+
+        jMenuItem8.setText("jMenuItem8");
+        jPopupMenu1.add(jMenuItem8);
+
+        jMenuItem9.setText("jMenuItem9");
+        jPopupMenu1.add(jMenuItem9);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -559,17 +589,6 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonarchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 102, -1));
-
-        botonarchivo1.setBackground(new java.awt.Color(0, 204, 51));
-        botonarchivo1.setForeground(new java.awt.Color(0, 51, 51));
-        botonarchivo1.setText("Campos");
-        botonarchivo1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        botonarchivo1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonarchivo1MouseClicked(evt);
-            }
-        });
-        jPanel1.add(botonarchivo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 102, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/Icons/x.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -618,6 +637,22 @@ public class Pantalla extends javax.swing.JFrame {
         labelborde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoestructura2/Icons/borde (1).png"))); // NOI18N
         jPanel1.add(labelborde, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 860, 570));
 
+        botonregistro.setBackground(new java.awt.Color(255, 255, 102));
+        botonregistro.setText("Registro");
+        botonregistro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(botonregistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 110, 20));
+
+        botonarchivo3.setBackground(new java.awt.Color(0, 204, 51));
+        botonarchivo3.setForeground(new java.awt.Color(0, 51, 51));
+        botonarchivo3.setText("Campos");
+        botonarchivo3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        botonarchivo3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonarchivo3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(botonarchivo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, 102, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -640,15 +675,6 @@ public class Pantalla extends javax.swing.JFrame {
         popmenuarchivo.show(botonarchivo, botonarchivo.getX() - 210, botonarchivo.getY() - 15);
 
     }//GEN-LAST:event_botonarchivoMouseClicked
-
-    private void botonarchivo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivo1MouseClicked
-
-        if (archivoabierto != null) {
-            panelcampos.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
-        }
-    }//GEN-LAST:event_botonarchivo1MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         System.exit(0);
@@ -677,6 +703,8 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void crearcamposbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearcamposbtn1MouseClicked
+        jSpinner1.setModel(model);
+        
         labelnombrearchivo.setVisible(false);
         jDialog1.pack();
         jDialog1.setLocationRelativeTo(panelcampos);
@@ -722,26 +750,31 @@ public class Pantalla extends javax.swing.JFrame {
     }//GEN-LAST:event_nollaveprimariaActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        Campo campoanadir = new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected());
-        if (validarcampo(sillaveprimaria.isSelected(), nollaveprimaria.isSelected(), sillavesecundaria.isSelected(), nollavesecundaria.isSelected(), textfieldnombredelcampo.getText(), jComboBox1.getSelectedItem() + "", ((Integer) jSpinner1.getValue()), campoanadir)) {
-            if (llaveprimariacreada == false && sillaveprimaria.isSelected()) {
-                llaveprimariacreada = true;
-            } else if (sillavesecundaria.isSelected() == true) {
-                contllavesecundarias++;
+        if (campos.size() < 10) {
+            Campo campoanadir = new Campo(textfieldnombredelcampo.getText(), ((Integer) jSpinner1.getValue()), jComboBox1.getSelectedItem() + "", sillaveprimaria.isSelected(), sillavesecundaria.isSelected());
+            if (validarcampo(sillaveprimaria.isSelected(), nollaveprimaria.isSelected(), sillavesecundaria.isSelected(), nollavesecundaria.isSelected(), textfieldnombredelcampo.getText(), jComboBox1.getSelectedItem() + "", ((Integer) jSpinner1.getValue()), campoanadir)) {
+                if (llaveprimariacreada == false && sillaveprimaria.isSelected()) {
+                    llaveprimariacreada = true;
+                } else if (sillavesecundaria.isSelected() == true) {
+                    contllavesecundarias++;
 
+                }
+                campos.add(campoanadir);
+                DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
+                modelojlist.addElement(campos.get(campos.size() - 1));
+                JOptionPane.showMessageDialog(null, "Campo creado");
+                textfieldnombredelcampo.setText("");
+                jSpinner1.setValue(0);
+                sillaveprimaria.setSelected(false);
+                nollaveprimaria.setSelected(true);
+                sillavesecundaria.setSelected(false);
+                nollavesecundaria.setSelected(true);
+                jDialog1.dispose();
             }
-            campos.add(campoanadir);
-            DefaultListModel modelojlist = (DefaultListModel) listacampos.getModel();
-            modelojlist.addElement(campos.get(campos.size() - 1));
-            JOptionPane.showMessageDialog(null, "Campo creado");
-            textfieldnombredelcampo.setText("");
-            jSpinner1.setValue(0);
-            sillaveprimaria.setSelected(false);
-            nollaveprimaria.setSelected(true);
-            sillavesecundaria.setSelected(false);
-            nollavesecundaria.setSelected(true);
-            jDialog1.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya no se pueden ingresar mas campos");
         }
+
 
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -755,6 +788,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         DefaultListModel modelolista = (DefaultListModel) listacampos.getModel();
+        spinnermodificar.setEnabled(true);
         Campo campomodificar = (Campo) modelolista.getElementAt(listacampos.getSelectedIndex());
         jDialog2.pack();
         jDialog2.setLocationRelativeTo(panelcampos);
@@ -798,6 +832,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void modificarbnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificarbnMouseClicked
         Campo c = new Campo(textfieldnombremodificar.getText(), ((Integer) spinnermodificar.getValue()), combomodificar.getSelectedItem() + "", sillaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected());
+        
         if (validarcampo(false, nollaveprimariamodificar.isSelected(), sillavesecundariamodificar.isSelected(), nollavesecundariamodificar.isSelected(), textfieldnombremodificar.getText(), combomodificar.getSelectedItem() + "", ((Integer) spinnermodificar.getValue()), new Campo(""))) {
             if (c.llaveprimaria == false && erallaveprimaria == true) {
                 llaveprimariacreada = false;
@@ -930,6 +965,7 @@ public class Pantalla extends javax.swing.JFrame {
             jLabel7.setVisible(false);
             jSpinner1.setVisible(false);
             sillaveprimaria.setEnabled(false);
+            jSpinner1.setValue(1);
         } else if (((String) jComboBox1.getSelectedItem()).equalsIgnoreCase("char")) {
 
             jSpinner1.setValue(2);
@@ -955,9 +991,19 @@ public class Pantalla extends javax.swing.JFrame {
             jLabel14.setVisible(true);
             spinnermodificar.setVisible(true);
             sillaveprimariamodificar.setEnabled(true);
+            spinnermodificar.setModel(model);
 
         }
     }//GEN-LAST:event_combomodificarActionPerformed
+
+    private void botonarchivo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonarchivo3MouseClicked
+
+        if (archivoabierto != null) {
+            panelcampos.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
+        }
+    }//GEN-LAST:event_botonarchivo3MouseClicked
 
     public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
         if (llaveprimariacreada && sillaveprimariavalidar) {
@@ -1049,6 +1095,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
+    SpinnerNumberModel model = new SpinnerNumberModel();
     File archivoabierto;
     int contllavesecundarias = 0;
     boolean llaveprimariacreada;
@@ -1058,7 +1105,8 @@ public class Pantalla extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrirarchivo;
     private javax.swing.JButton botonarchivo;
-    private javax.swing.JButton botonarchivo1;
+    private javax.swing.JButton botonarchivo3;
+    private javax.swing.JButton botonregistro;
     private javax.swing.JMenuItem cerrararchivo;
     private javax.swing.JComboBox<String> combomodificar;
     private javax.swing.JMenuItem crearcampos;
@@ -1082,9 +1130,17 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JToggleButton jToggleButton1;
