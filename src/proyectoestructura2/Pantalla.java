@@ -35,7 +35,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         initComponents();
         int initialValue = 1;
-        int minValue = 0;
+        int minValue = 1;
         int maxValue = 10000;
         int stepSize = 1;
         SpinnerNumberModel model = new SpinnerNumberModel(initialValue, minValue, maxValue, stepSize);
@@ -850,32 +850,35 @@ public class Pantalla extends javax.swing.JFrame {
                     while (entrada.hasNextLine()) {
                         s += entrada.nextLine();
                     }
-                    String[] splitter = s.split("/");
-                    for (int i = 0; i < splitter.length; i++) {
-                        String[] splitter2 = splitter[i].split("!");
-                        switch (splitter2[3]) {
-                            case "0":
+                    if (s.length() > 3) {
 
-                                campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, false));
-                                modelolista.addElement(campos.get(campos.size() - 1));
-                                break;
-                            case "1":
-                                campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], true, false));
-                                modelolista.addElement(campos.get(campos.size() - 1));
-                                cont++;
-                                break;
-                            case "2":
-                                campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, true));
-                                modelolista.addElement(campos.get(campos.size() - 1));
-                                contllavesecundarias++;
-                                break;
+                        String[] splitter = s.split("/");
+                        for (int i = 0; i < splitter.length; i++) {
+                            String[] splitter2 = splitter[i].split("!");
+                            switch (splitter2[3]) {
+                                case "0":
 
+                                    campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, false));
+                                    modelolista.addElement(campos.get(campos.size() - 1));
+                                    break;
+                                case "1":
+                                    campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], true, false));
+                                    modelolista.addElement(campos.get(campos.size() - 1));
+                                    cont++;
+                                    break;
+                                case "2":
+                                    campos.add(new Campo(splitter2[0], Integer.parseInt(splitter2[2]), splitter2[1], false, true));
+                                    modelolista.addElement(campos.get(campos.size() - 1));
+                                    contllavesecundarias++;
+                                    break;
+
+                            }
                         }
+                        if (cont == 1) {
+                            llaveprimariacreada = true;
+                        }
+                        listacampos.setModel(modelolista);
                     }
-                    if (cont == 1) {
-                        llaveprimariacreada = true;
-                    }
-                    listacampos.setModel(modelolista);
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -902,13 +905,13 @@ public class Pantalla extends javax.swing.JFrame {
         int resp = JOptionPane.showConfirmDialog(null, "Desea guardar el archivo?");
         if (resp == JOptionPane.YES_OPTION) {
             guardararchivo();
-            archivoabierto = null;
-            labelnombrearchivo.setText("");
-            labelnombrearchivo.setVisible(false);
-            listacampos.setModel(new DefaultListModel());
-            panelcampos.setVisible(false);
 
         }
+        archivoabierto = null;
+        labelnombrearchivo.setText("");
+        labelnombrearchivo.setVisible(false);
+        listacampos.setModel(new DefaultListModel());
+        panelcampos.setVisible(false);
 
     }//GEN-LAST:event_cerrararchivoActionPerformed
 
@@ -917,6 +920,10 @@ public class Pantalla extends javax.swing.JFrame {
             jLabel7.setVisible(false);
             jSpinner1.setVisible(false);
             sillaveprimaria.setEnabled(false);
+        } else if (((String) jComboBox1.getSelectedItem()).equalsIgnoreCase("char")) {
+
+            jSpinner1.setValue(2);
+            jSpinner1.setEnabled(false);
         } else {
             jLabel7.setVisible(true);
             jSpinner1.setVisible(true);
