@@ -62,18 +62,32 @@ public class Pantalla extends javax.swing.JFrame {
         txtfields.add(txtfield1);
         txtfields.add(txtfield2);
         txtfields.add(txtfield3);
-        txtfields.add(txtfield4);
         txtfields.add(txtfield5);
+        txtfields.add(txtfield4);
         txtfields.add(txtfield6);
         txtfields.add(txtfield7);
         txtfields.add(txtfield8);
         txtfields.add(txtfield9);
         txtfields.add(txtfield10);
+        longitudes.add(longitud1);
+        longitudes.add(longitud2);
+        longitudes.add(longitud3);
+        longitudes.add(longitud4);
+        longitudes.add(longitud5);
+        longitudes.add(longitud6);
+        longitudes.add(longitud7);
+        longitudes.add(longitud8);
+        longitudes.add(longitud9);
+        longitudes.add(longitud10);
         for (int i = 0; i < labels.size(); i++) {
             labels.get(i).setVisible(false);
         }
         for (int i = 0; i < txtfields.size(); i++) {
             txtfields.get(i).setVisible(false);
+        }
+        for (int i = 0; i < longitudes.size(); i++) {
+            longitudes.get(i).setVisible(false);
+            longitudes.get(i).setText("0");
         }
     }
 
@@ -155,7 +169,7 @@ public class Pantalla extends javax.swing.JFrame {
         lblcampos9 = new javax.swing.JLabel();
         txtfield9 = new javax.swing.JTextField();
         lblcampos5 = new javax.swing.JLabel();
-        txtfield5 = new javax.swing.JTextField();
+        txtfield4 = new javax.swing.JTextField();
         lblcampos1 = new javax.swing.JLabel();
         txtfield1 = new javax.swing.JTextField();
         lblcampos2 = new javax.swing.JLabel();
@@ -163,7 +177,18 @@ public class Pantalla extends javax.swing.JFrame {
         lblcampos3 = new javax.swing.JLabel();
         txtfield3 = new javax.swing.JTextField();
         lblcampos4 = new javax.swing.JLabel();
-        txtfield4 = new javax.swing.JTextField();
+        txtfield5 = new javax.swing.JTextField();
+        longitud5 = new javax.swing.JLabel();
+        longitud1 = new javax.swing.JLabel();
+        longitud2 = new javax.swing.JLabel();
+        longitud3 = new javax.swing.JLabel();
+        longitud4 = new javax.swing.JLabel();
+        longitud6 = new javax.swing.JLabel();
+        longitud7 = new javax.swing.JLabel();
+        longitud8 = new javax.swing.JLabel();
+        longitud9 = new javax.swing.JLabel();
+        longitud10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         labelnombrearchivo = new javax.swing.JLabel();
         botonarchivo = new javax.swing.JButton();
@@ -646,62 +671,170 @@ public class Pantalla extends javax.swing.JFrame {
         lblcampos10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos10.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos10.setText("Campo10");
-        panelintroducirregistros.add(lblcampos10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
-        panelintroducirregistros.add(txtfield10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 100, -1));
+        panelintroducirregistros.add(lblcampos10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
+
+        txtfield10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield10KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 110, -1));
 
         lblcampos6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos6.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos6.setText("Campo6");
-        panelintroducirregistros.add(lblcampos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
-        panelintroducirregistros.add(txtfield6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 100, -1));
+        panelintroducirregistros.add(lblcampos6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
+
+        txtfield6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield6KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 110, -1));
 
         lblcampos7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos7.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos7.setText("Campo7");
-        panelintroducirregistros.add(lblcampos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
-        panelintroducirregistros.add(txtfield7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 100, -1));
+        panelintroducirregistros.add(lblcampos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, -1, -1));
+
+        txtfield7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield7KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 110, -1));
 
         lblcampos8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos8.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos8.setText("Campo8");
-        panelintroducirregistros.add(lblcampos8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
-        panelintroducirregistros.add(txtfield8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 100, -1));
+        panelintroducirregistros.add(lblcampos8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
+
+        txtfield8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield8KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 110, -1));
 
         lblcampos9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos9.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos9.setText("Campo9");
-        panelintroducirregistros.add(lblcampos9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
-        panelintroducirregistros.add(txtfield9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 100, -1));
+        panelintroducirregistros.add(lblcampos9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+
+        txtfield9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield9KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 110, -1));
 
         lblcampos5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos5.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos5.setText("Campo5");
         panelintroducirregistros.add(lblcampos5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
-        panelintroducirregistros.add(txtfield5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 100, -1));
+
+        txtfield4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield4KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 140, -1));
 
         lblcampos1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos1.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos1.setText("Campo1");
         panelintroducirregistros.add(lblcampos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-        panelintroducirregistros.add(txtfield1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 100, -1));
+
+        txtfield1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield1KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 140, -1));
 
         lblcampos2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos2.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos2.setText("Campo2");
         panelintroducirregistros.add(lblcampos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-        panelintroducirregistros.add(txtfield2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 100, -1));
+
+        txtfield2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield2KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 140, -1));
 
         lblcampos3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos3.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos3.setText("Campo3");
         panelintroducirregistros.add(lblcampos3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        panelintroducirregistros.add(txtfield3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 100, -1));
+
+        txtfield3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield3KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, -1));
 
         lblcampos4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblcampos4.setForeground(new java.awt.Color(255, 255, 255));
         lblcampos4.setText("Campo4");
         panelintroducirregistros.add(lblcampos4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-        panelintroducirregistros.add(txtfield4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 100, -1));
+
+        txtfield5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtfield5KeyReleased(evt);
+            }
+        });
+        panelintroducirregistros.add(txtfield5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 140, -1));
+
+        longitud5.setForeground(new java.awt.Color(255, 255, 255));
+        longitud5.setText("4");
+        panelintroducirregistros.add(longitud5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 10, -1));
+
+        longitud1.setForeground(new java.awt.Color(255, 255, 255));
+        longitud1.setText("1");
+        panelintroducirregistros.add(longitud1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 20, -1));
+
+        longitud2.setForeground(new java.awt.Color(255, 255, 255));
+        longitud2.setText("2");
+        panelintroducirregistros.add(longitud2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 10, -1));
+
+        longitud3.setForeground(new java.awt.Color(255, 255, 255));
+        longitud3.setText("3");
+        panelintroducirregistros.add(longitud3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 10, -1));
+
+        longitud4.setForeground(new java.awt.Color(255, 255, 255));
+        longitud4.setText("4");
+        panelintroducirregistros.add(longitud4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 10, -1));
+
+        longitud6.setForeground(new java.awt.Color(255, 255, 255));
+        longitud6.setText("6");
+        panelintroducirregistros.add(longitud6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+
+        longitud7.setForeground(new java.awt.Color(255, 255, 255));
+        longitud7.setText("7");
+        panelintroducirregistros.add(longitud7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 20, -1));
+
+        longitud8.setForeground(new java.awt.Color(255, 255, 255));
+        longitud8.setText("8");
+        panelintroducirregistros.add(longitud8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 20, -1));
+
+        longitud9.setForeground(new java.awt.Color(255, 255, 255));
+        longitud9.setText("9");
+        panelintroducirregistros.add(longitud9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 20, -1));
+
+        longitud10.setForeground(new java.awt.Color(255, 255, 255));
+        longitud10.setText("10");
+        panelintroducirregistros.add(longitud10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
+
+        jButton1.setText("Introducir registro");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        panelintroducirregistros.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, -1));
 
         jDialog3.getContentPane().add(panelintroducirregistros, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 490, 460));
         panelintroducirregistros.getAccessibleContext().setAccessibleParent(panelcampos);
@@ -846,7 +979,7 @@ public class Pantalla extends javax.swing.JFrame {
 
     private void crearcamposbtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearcamposbtn1MouseClicked
         jSpinner1.setModel(model);
-        
+        panelcampos.setVisible(false);
         labelnombrearchivo.setVisible(false);
         jDialog1.pack();
         jDialog1.setLocationRelativeTo(panelcampos);
@@ -906,12 +1039,18 @@ public class Pantalla extends javax.swing.JFrame {
                 modelojlist.addElement(campos.get(campos.size() - 1));
                 JOptionPane.showMessageDialog(null, "Campo creado");
                 textfieldnombredelcampo.setText("");
-                jSpinner1.setValue(0);
+                jSpinner1.setValue(1);
                 sillaveprimaria.setSelected(false);
                 nollaveprimaria.setSelected(true);
                 sillavesecundaria.setSelected(false);
                 nollavesecundaria.setSelected(true);
                 jDialog1.dispose();
+                for (int i = 0; i < campos.size(); i++) {
+                    labels.get(i).setText(campos.get(i).nombre);
+                    labels.get(i).setVisible(true);
+                    txtfields.get(i).setVisible(true);
+                }
+                
             }
         } else {
             JOptionPane.showMessageDialog(null, "Ya no se pueden ingresar mas campos");
@@ -1070,8 +1209,9 @@ public class Pantalla extends javax.swing.JFrame {
                         labels.get(i).setText(campos.get(i).nombre);
                         labels.get(i).setVisible(true);
                         txtfields.get(i).setVisible(true);
+                        longitudes.get(i).setVisible(true);
                     }
-    
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -1148,6 +1288,7 @@ public class Pantalla extends javax.swing.JFrame {
         
         if (archivoabierto != null) {
             panelcampos.setVisible(true);
+            jDialog3.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
         }
@@ -1156,6 +1297,7 @@ public class Pantalla extends javax.swing.JFrame {
     private void botonregistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonregistroMouseClicked
         if (archivoabierto != null) {
             popmenuregistros.show(botonregistro, botonregistro.getX() - 439, botonregistro.getY() - 20);
+            panelcampos.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "No hay archivos abiertos");
         }
@@ -1165,8 +1307,52 @@ public class Pantalla extends javax.swing.JFrame {
         jDialog3.pack();
         jDialog3.setLocationRelativeTo(panelcampos);
         jDialog3.setVisible(true);
-         
+        panelcampos.setVisible(false);
     }//GEN-LAST:event_introducirregistrosActionPerformed
+
+    private void txtfield1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield1KeyReleased
+        longitud1.setText(txtfield1.getText().length() + "");
+    }//GEN-LAST:event_txtfield1KeyReleased
+
+    private void txtfield2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield2KeyReleased
+        longitud2.setText(txtfield2.getText().length() + "");
+    }//GEN-LAST:event_txtfield2KeyReleased
+
+    private void txtfield3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield3KeyReleased
+        longitud3.setText(txtfield3.getText().length() + "");
+    }//GEN-LAST:event_txtfield3KeyReleased
+
+    private void txtfield4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield4KeyReleased
+        longitud4.setText(txtfield4.getText().length() + "");
+    }//GEN-LAST:event_txtfield4KeyReleased
+
+    private void txtfield5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield5KeyReleased
+        longitud5.setText(txtfield5.getText().length() + "");
+    }//GEN-LAST:event_txtfield5KeyReleased
+
+    private void txtfield6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield6KeyReleased
+        longitud6.setText(txtfield6.getText().length() + "");
+    }//GEN-LAST:event_txtfield6KeyReleased
+
+    private void txtfield7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield7KeyReleased
+        longitud7.setText(txtfield7.getText().length() + "");
+    }//GEN-LAST:event_txtfield7KeyReleased
+
+    private void txtfield8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield8KeyReleased
+        longitud8.setText(txtfield8.getText().length() + "");
+    }//GEN-LAST:event_txtfield8KeyReleased
+
+    private void txtfield9KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield9KeyReleased
+        longitud9.setText(txtfield9.getText().length() + "");
+    }//GEN-LAST:event_txtfield9KeyReleased
+
+    private void txtfield10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfield10KeyReleased
+        longitud10.setText(txtfield10.getText().length() + "");
+    }//GEN-LAST:event_txtfield10KeyReleased
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
     
     public boolean validarcampo(boolean sillaveprimariavalidar, boolean nollaveprimariavalida, boolean sillavesecundariavalidar, boolean nollavesecundariavalidar, String nba, String tipodedato, int longitud, Campo c) {
         if (llaveprimariacreada && sillaveprimariavalidar) {
@@ -1270,6 +1456,7 @@ public class Pantalla extends javax.swing.JFrame {
     ArrayList<Campo> campos = new ArrayList();
     ArrayList<JTextField> txtfields = new ArrayList();
     ArrayList<JLabel> labels = new ArrayList();
+    ArrayList<JLabel> longitudes = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrirarchivo;
     private javax.swing.JMenuItem borrarregistros;
@@ -1284,6 +1471,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JButton crearcamposbtn1;
     private javax.swing.JMenuItem cruzarregistros;
     private javax.swing.JMenuItem introducirregistros;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
@@ -1327,6 +1515,16 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JMenuItem listarregistros;
     private javax.swing.ButtonGroup llaveprimaria;
     private javax.swing.ButtonGroup llavesecundaria;
+    private javax.swing.JLabel longitud1;
+    private javax.swing.JLabel longitud10;
+    private javax.swing.JLabel longitud2;
+    private javax.swing.JLabel longitud3;
+    private javax.swing.JLabel longitud4;
+    private javax.swing.JLabel longitud5;
+    private javax.swing.JLabel longitud6;
+    private javax.swing.JLabel longitud7;
+    private javax.swing.JLabel longitud8;
+    private javax.swing.JLabel longitud9;
     private javax.swing.JPopupMenu menucampos;
     private javax.swing.JToggleButton modificarbn;
     private javax.swing.ButtonGroup modificarcamposllaveprimaria;
